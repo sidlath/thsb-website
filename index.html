@@ -217,9 +217,12 @@
       transition: all 0.25s; border: 1px solid transparent;
     }
     .menu-card:hover { border-color: var(--yellow-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(30,17,9,0.06); }
+    .menu-card-img-wrap {
+      width: 100%; height: 200px; overflow: hidden; background: #f5f0e8;
+    }
     .menu-card-img {
-      width: 100%; height: 180px; object-fit: cover; object-position: center;
-      display: block; background: var(--beige);
+      width: 108%; height: 108%; object-fit: cover; object-position: center;
+      display: block; margin: -4% 0 0 -4%;
     }
     .menu-card-body { padding: 1.25rem 1.5rem 1.5rem; }
     .menu-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
@@ -496,7 +499,7 @@
         <h3 class="menu-section-title">Savory Buns</h3>
         <div class="menu-grid">
           <div class="menu-card">
-            <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Vada Pav Buns</h3><span class="price">₹1,200/dz</span></div>
               <p>Our signature fluffy buns stuffed with spiced vada — the taste of Mumbai, reimagined.</p>
@@ -504,42 +507,42 @@
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/chana-kulcha.jpeg" alt="Chana Kulcha Buns" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/chana-kulcha.jpeg" alt="Chana Kulcha Buns" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Chana Kulcha Buns</h3><span class="price">₹1,200/dz</span></div>
               <p>Soft buns filled with a spiced chana masala — familiar street food flavors, elevated.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/samosa-roll.jpeg" alt="Samosa Croissant" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/samosa-roll.jpeg" alt="Samosa Croissant" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Samosa Croissant</h3><span class="price">₹1,200/dz</span></div>
               <p>Flaky buttery croissant meets the spiced potato filling of a classic samosa.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/pesto-pinwheel.jpeg" alt="Pesto Pinwheel" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/pesto-pinwheel.jpeg" alt="Pesto Pinwheel" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pesto Pinwheel</h3><span class="price">₹1,200/dz</span></div>
               <p>Swirled with house-made basil pesto and baked to golden perfection.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/aglio-olio-pocket.jpeg" alt="Aglio Olio Pockets" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-pocket.jpeg" alt="Aglio Olio Pockets" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Aglio Olio Pockets</h3><span class="price">₹1,200/dz</span></div>
               <p>Soft pockets filled with our aromatic garlic and chilli sauce.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/pizza-twists.jpeg" alt="Pizza Twists" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/pizza-twists.jpeg" alt="Pizza Twists" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pizza Twists</h3><span class="price">₹1,200/dz</span></div>
               <p>Cheesy, herby twisted buns — the perfect snack or party appetizer.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/mini-buns.jpeg" alt="Achari Paneer Parcel" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/mini-buns.jpeg" alt="Achari Paneer Parcel" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Achari Paneer Parcel</h3><span class="price">₹1,200/dz</span></div>
               <p>Tangy achari paneer wrapped in a soft, baked parcel. Bold Indian flavors.</p>
@@ -547,7 +550,7 @@
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/mini-buns.jpeg" alt="Mini Stuffed Buns" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/mini-buns.jpeg" alt="Mini Stuffed Buns" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Mini Stuffed Buns</h3><span class="price">₹1,200/24pc</span></div>
               <p>Bite-sized assorted buns — perfect for parties and gatherings.</p>
@@ -561,28 +564,28 @@
         <h3 class="menu-section-title">Sourdough Breads</h3>
         <div class="menu-grid">
           <div class="menu-card">
-            <img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Khapli Wheat Sourdough</h3><span class="price">₹350</span></div>
               <p>Traditional emmer wheat sourdough, slow-fermented for 48 hours. 466gms.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/jowar-khapli-sourdough.jpeg" alt="Jowar & Khapli Wheat" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/jowar-khapli-sourdough.jpeg" alt="Jowar & Khapli Wheat" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Jowar & Khapli Wheat</h3><span class="price">₹350</span></div>
               <p>A nutritious blend of jowar and khapli wheat, naturally leavened. 420gms.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/jowar-seeded-sourdough.jpeg" alt="Jowar & Khapli Seeded" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/jowar-seeded-sourdough.jpeg" alt="Jowar & Khapli Seeded" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Jowar & Khapli Seeded</h3><span class="price">₹450</span></div>
               <p>Our signature jowar blend topped with a generous seed crust. 500gms.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/cheddar-jalapeno.jpeg" alt="Cheddar Jalapeno Sourdough" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/cheddar-jalapeno.jpeg" alt="Cheddar Jalapeno Sourdough" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Cheddar Jalapeno Sourdough</h3><span class="price">₹550</span></div>
               <p>Sharp cheddar and spicy jalapeno baked into a tangy sourdough. 500gms.</p>
@@ -590,14 +593,14 @@
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pesto Sourdough</h3><span class="price">₹550</span></div>
               <p>Fragrant basil pesto swirled through our classic sourdough. 500gms.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/gluten-free-bread.jpeg" alt="Gluten-Free Bread" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/gluten-free-bread.jpeg" alt="Gluten-Free Bread" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Gluten-Free Bread</h3><span class="price">₹550</span></div>
               <p>Made with alternative flours for those with gluten sensitivities. 500gms.</p>
@@ -605,7 +608,7 @@
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/gluten-free-seeded.jpeg" alt="Gluten-Free Seeded Bread" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/gluten-free-seeded.jpeg" alt="Gluten-Free Seeded Bread" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Gluten-Free Seeded Bread</h3><span class="price">₹650</span></div>
               <p>Our gluten-free bread loaded with a nutritious seed crust. 500gms.</p>
@@ -620,7 +623,7 @@
         <h3 class="menu-section-title">Artisan Snacks</h3>
         <div class="menu-grid">
           <div class="menu-card">
-            <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Mixed Seeds Chikki</h3><span class="price">₹750</span></div>
               <p>Crunchy, nutty, and naturally sweetened. Our #1 best seller. 250gms.</p>
@@ -628,14 +631,14 @@
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/almond-sesame-chikki.jpeg" alt="Roasted Almond & Sesame Chikki" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/almond-sesame-chikki.jpeg" alt="Roasted Almond & Sesame Chikki" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Roasted Almond & Sesame Chikki</h3><span class="price">₹900</span></div>
               <p>Premium almonds and sesame in a perfectly caramelized chikki. 250gms.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/tom-yum-nuts.jpeg" alt="Tom Yum Nuts" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/tom-yum-nuts.jpeg" alt="Tom Yum Nuts" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Tom Yum Nuts</h3><span class="price">₹700</span></div>
               <p>Roasted nuts tossed in a Thai-inspired tom yum seasoning. Addictive! 200gms.</p>
@@ -643,14 +646,14 @@
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/mixed-seeds-crackers.jpeg" alt="Mixed Seeds Crackers" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-crackers.jpeg" alt="Mixed Seeds Crackers" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Mixed Seeds Crackers</h3><span class="price">₹250</span></div>
               <p>Thin, crispy, and packed with seeds. Perfect with dips. 75gms.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/jowar-wholewheat-crackers.jpeg" alt="Jowar & Wholewheat Crackers" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/jowar-wholewheat-crackers.jpeg" alt="Jowar & Wholewheat Crackers" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Jowar & Wholewheat Crackers</h3><span class="price">₹250</span></div>
               <p>Wholesome crackers made with jowar and wholewheat flour. 100gms.</p>
@@ -664,28 +667,28 @@
         <h3 class="menu-section-title">Pasta & Sauces</h3>
         <div class="menu-grid">
           <div class="menu-card">
-            <img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Fresh Pasta</h3><span class="price">₹300</span></div>
               <p>Handmade fresh pasta — just cook for 3 minutes and pair with our sauces.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/pesto-sauce.jpeg" alt="Pesto Sauce" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/pesto-sauce.jpeg" alt="Pesto Sauce" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pesto Sauce</h3><span class="price">₹550</span></div>
               <p>Fresh basil, pine nuts, and parmesan blended into a vibrant green pesto.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/marinara-sauce.jpeg" alt="Marinara Sauce" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/marinara-sauce.jpeg" alt="Marinara Sauce" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Marinara Sauce</h3><span class="price">₹450</span></div>
               <p>Slow-cooked tomato sauce with garlic and Italian herbs.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/aglio-olio-sauce.jpeg" alt="Aglio e Olio Sauce" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-sauce.jpeg" alt="Aglio e Olio Sauce" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Aglio e Olio Sauce</h3><span class="price">₹550</span></div>
               <p>Garlic-infused olive oil with chilli flakes — simple and sublime.</p>
@@ -699,14 +702,14 @@
         <h3 class="menu-section-title">Dips</h3>
         <div class="menu-grid">
           <div class="menu-card">
-            <img src="images/products/aglio-olio-dip.jpeg" alt="Aglio Olio Dip" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-dip.jpeg" alt="Aglio Olio Dip" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Aglio Olio Dip</h3><span class="price">₹500</span></div>
               <p>A rich, garlicky dip perfect with our crackers and breads. 125gms.</p>
             </div>
           </div>
           <div class="menu-card">
-            <img src="images/products/olive-tapenade.jpeg" alt="Olive Tapenade" class="menu-card-img" loading="lazy">
+            <div class="menu-card-img-wrap"><img src="images/products/olive-tapenade.jpeg" alt="Olive Tapenade" class="menu-card-img" loading="lazy"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Olive Tapenade</h3><span class="price">₹500</span></div>
               <p>Briny, savory olive tapenade — a Mediterranean classic. 125gms.</p>
