@@ -34,9 +34,51 @@
       background: var(--white);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     .script { font-family: 'Dancing Script', cursive; }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+      background: linear-gradient(90deg, var(--yellow-bold), var(--yellow-light), var(--beige));
+      width: 0%; transition: width 0.1s linear;
+    }
+
+    /* ── GLOBAL ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     /* ── NAV ── */
     nav {
@@ -47,19 +89,27 @@
       transition: box-shadow 0.3s;
     }
     nav.scrolled { box-shadow: 0 2px 20px rgba(30,17,9,0.08); }
+    nav.scrolled .nav-logo { height: 50px; }
+    nav.scrolled .nav-inner { padding: 0.4rem 1.5rem; }
     .nav-inner {
       max-width: 1200px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.5rem; transition: padding 0.3s ease;
     }
-    .nav-logo { height: 70px; }
+    .nav-logo { height: 70px; transition: height 0.3s ease; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       text-decoration: none; color: var(--text-body);
       font-size: 0.9rem; font-weight: 500;
-      transition: color 0.2s;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--yellow-bold);
+      transition: width 0.3s ease;
     }
     .nav-links a:hover { color: var(--yellow-bold); }
+    .nav-links a:hover::after { width: 100%; }
     .nav-cta {
       background: var(--yellow-bold); color: var(--dark);
       padding: 0.6rem 1.4rem; border-radius: 50px;
@@ -97,6 +147,7 @@
     .hero-text h1 {
       font-size: 3.5rem; line-height: 1.15; font-weight: 700;
       color: var(--dark); margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease both;
     }
     .hero-text h1 .script {
       display: block; font-size: 4rem; color: var(--yellow-bold);
@@ -105,8 +156,9 @@
     .hero-text p {
       font-size: 1.15rem; color: var(--text-light);
       max-width: 480px; margin-bottom: 2rem; line-height: 1.7;
+      animation: fadeInUp 0.8s 0.2s ease both;
     }
-    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeInUp 0.8s 0.4s ease both; }
     .btn-primary {
       background: var(--yellow-bold); color: var(--dark);
       padding: 0.9rem 2rem; border-radius: 50px;
@@ -129,21 +181,26 @@
     }
     .hero-collage {
       position: relative; width: 400px; height: 400px;
+      animation: fadeInScale 1s 0.3s ease both;
     }
     .collage-main {
       width: 320px; height: 320px; object-fit: cover; border-radius: 24px;
       position: absolute; top: 40px; left: 40px;
       box-shadow: 0 20px 60px rgba(30,17,9,0.15);
       border: 4px solid var(--white);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
+    .collage-main:hover { transform: scale(1.03); box-shadow: 0 25px 70px rgba(30,17,9,0.2); }
     .collage-sm {
       width: 130px; height: 130px; object-fit: cover; border-radius: 16px;
       position: absolute; border: 3px solid var(--white);
       box-shadow: 0 8px 25px rgba(30,17,9,0.12);
+      transition: transform 0.4s ease;
     }
-    .collage-sm-1 { top: -10px; right: -10px; }
-    .collage-sm-2 { bottom: -10px; left: -10px; }
-    .collage-sm-3 { bottom: 30px; right: -20px; }
+    .collage-sm:hover { transform: scale(1.08) rotate(2deg); }
+    .collage-sm-1 { top: -10px; right: -10px; animation: fadeInRight 0.6s 0.6s ease both; }
+    .collage-sm-2 { bottom: -10px; left: -10px; animation: fadeInLeft 0.6s 0.8s ease both; }
+    .collage-sm-3 { bottom: 30px; right: -20px; animation: fadeInRight 0.6s 1.0s ease both; }
 
     /* ── STATS BAR ── */
     .stats-bar {
@@ -168,9 +225,10 @@
       padding: 1rem 1.5rem; border-radius: 16px;
       box-shadow: 0 8px 30px rgba(30,17,9,0.1);
       font-size: 0.85rem; font-weight: 500;
+      animation: float 4s ease-in-out infinite;
     }
-    .hero-float-1 { top: 10%; right: -10%; }
-    .hero-float-2 { bottom: 10%; left: -10%; }
+    .hero-float-1 { top: 10%; right: -10%; animation-delay: 0s; }
+    .hero-float-2 { bottom: 10%; left: -10%; animation-delay: 2s; }
     .hero-float-1 span, .hero-float-2 span { font-size: 1.4rem; display: block; margin-bottom: 0.2rem; }
 
     /* ── SECTION SHARED ── */
@@ -178,7 +236,12 @@
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
       font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px;
-      color: var(--yellow-bold); font-weight: 600; margin-bottom: 0.75rem;
+      font-weight: 600; margin-bottom: 0.75rem;
+      background: linear-gradient(90deg, var(--yellow-bold), var(--beige), var(--yellow-bold));
+      background-size: 200% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
     }
     .section-title {
       font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;
@@ -202,7 +265,9 @@
     }
     .story-image img {
       width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
     }
+    .story-image img:hover { transform: scale(1.08); }
     .story-content p {
       font-size: 1.05rem; color: var(--text-body); line-height: 1.8;
       margin-bottom: 1.25rem;
@@ -242,9 +307,14 @@
     }
     .menu-card {
       background: var(--cream); border-radius: 16px; overflow: hidden;
-      transition: all 0.25s; border: 1px solid transparent;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid transparent;
     }
-    .menu-card:hover { border-color: var(--yellow-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(30,17,9,0.06); }
+    .menu-card:hover {
+      border-color: var(--yellow-light); transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(30,17,9,0.1);
+    }
+    .menu-card:hover .menu-card-img { transform: scale(1.05); }
+    .menu-card:hover .price { transform: scale(1.1); }
     .menu-card-img-wrap {
       width: 100%; height: 220px; overflow: hidden; background: #faf6ef;
       display: flex; align-items: center; justify-content: center;
@@ -252,6 +322,7 @@
     .menu-card-img {
       width: 90%; height: 90%; object-fit: contain; object-position: center;
       display: block;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .menu-card-body { padding: 1.25rem 1.5rem 1.5rem; }
     .menu-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
@@ -259,6 +330,7 @@
     .menu-card .price {
       font-weight: 700; color: var(--yellow-bold);
       font-size: 1.05rem; white-space: nowrap;
+      transition: transform 0.3s ease;
     }
     .menu-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
     .menu-card .tag {
@@ -293,12 +365,21 @@
       display: flex; gap: 1rem; align-items: flex-start;
       box-shadow: 0 4px 15px rgba(30,17,9,0.04);
     }
+    .community-card {
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .community-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(30,17,9,0.08);
+    }
     .community-card .icon {
       font-size: 2rem; flex-shrink: 0;
       width: 50px; height: 50px;
       display: flex; align-items: center; justify-content: center;
       background: rgba(248,195,89,0.15); border-radius: 12px;
+      transition: transform 0.3s ease;
     }
+    .community-card:hover .icon { transform: scale(1.15) rotate(5deg); }
     .community-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
     .community-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
 
@@ -311,6 +392,11 @@
     .testimonial-card {
       background: var(--cream); border-radius: 16px; padding: 2rem;
       position: relative;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 35px rgba(30,17,9,0.08);
     }
     .testimonial-card::before {
       content: '\201C'; font-size: 4rem; color: var(--yellow-light);
@@ -347,7 +433,7 @@
       transition: all 0.25s;
       box-shadow: 0 8px 25px rgba(37,211,102,0.3);
     }
-    .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(37,211,102,0.4); }
+    .btn-whatsapp:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 35px rgba(37,211,102,0.4); }
     .btn-whatsapp svg { width: 24px; height: 24px; fill: currentColor; }
 
     /* ── FOOTER ── */
@@ -431,16 +517,30 @@
     }
     .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
     .wa-float svg { width: 32px; height: 32px; fill: white; }
+    .wa-float { animation: pulse 2s ease-in-out infinite; }
 
     /* ── ANIMATIONS ── */
     .fade-in {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* Staggered delays for grid children */
+    .fade-in.stagger-1 { transition-delay: 0.08s; }
+    .fade-in.stagger-2 { transition-delay: 0.16s; }
+    .fade-in.stagger-3 { transition-delay: 0.24s; }
+    .fade-in.stagger-4 { transition-delay: 0.32s; }
+    .fade-in.stagger-5 { transition-delay: 0.40s; }
+    .fade-in.stagger-6 { transition-delay: 0.48s; }
+    .fade-in.stagger-7 { transition-delay: 0.56s; }
+    .fade-in.stagger-8 { transition-delay: 0.64s; }
+    .fade-in.stagger-9 { transition-delay: 0.72s; }
   </style>
 </head>
 <body>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -918,19 +1018,45 @@
   </a>
 
   <script>
-    // Scroll effects
+    // ── SCROLL PROGRESS BAR ──
+    const scrollProgress = document.getElementById('scrollProgress');
     const nav = document.getElementById('navbar');
+
     window.addEventListener('scroll', () => {
+      // Nav shrink
       nav.classList.toggle('scrolled', window.scrollY > 50);
+
+      // Progress bar
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = scrollPercent + '%';
     });
 
-    // Fade-in on scroll — threshold 0 so elements at bottom of viewport still trigger
+    // ── FADE-IN ON SCROLL with staggered delays ──
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
     }, { threshold: 0, rootMargin: '0px 0px 50px 0px' });
-    document.querySelectorAll('.menu-card, .community-card, .testimonial-card, .story-content, .story-image').forEach(el => {
+
+    // Add stagger classes to grid children
+    document.querySelectorAll('.menu-grid, .testimonials-grid, .community-cards').forEach(grid => {
+      grid.children && Array.from(grid.children).forEach((child, i) => {
+        child.classList.add('fade-in', 'stagger-' + Math.min(i, 9));
+      });
+    });
+
+    // Also fade in story and section titles
+    document.querySelectorAll('.story-content, .story-image, .section-label, .section-title, .menu-section-title').forEach(el => {
       el.classList.add('fade-in');
-      // If element is already in viewport on page load, show immediately
+    });
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         el.classList.add('visible');
@@ -939,7 +1065,42 @@
       }
     });
 
-    // Close mobile menu on link click
+    // ── ANIMATED COUNTERS (stats bar) ──
+    function animateCounter(el) {
+      const text = el.textContent.trim();
+      const match = text.match(/^([\d,]+)(\+?)(%?)$/);
+      if (!match) return;
+      const target = parseInt(match[1].replace(/,/g, ''), 10);
+      const suffix = (match[2] || '') + (match[3] || '');
+      const duration = 1800;
+      const start = performance.now();
+      el.textContent = '0' + suffix;
+
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease-out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(target * ease);
+        el.textContent = current.toLocaleString('en-IN') + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.stat-number').forEach(animateCounter);
+          statsObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsBar = document.querySelector('.stats-bar');
+    if (statsBar) statsObserver.observe(statsBar);
+
+    // ── CLOSE MOBILE MENU ON LINK CLICK ──
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('navLinks').classList.remove('open');
