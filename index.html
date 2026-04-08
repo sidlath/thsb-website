@@ -127,16 +127,42 @@
     .hero-visual {
       position: relative; display: flex; justify-content: center; align-items: center;
     }
-    .hero-badge {
-      width: 380px; height: 380px;
-      background: linear-gradient(145deg, var(--yellow-light), var(--yellow-bold));
-      border-radius: 50%;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 2rem;
-      box-shadow: 0 20px 60px rgba(248,195,89,0.3);
+    .hero-collage {
+      position: relative; width: 400px; height: 400px;
     }
-    .hero-badge .script { font-size: 2.8rem; color: var(--dark); margin-bottom: 0.5rem; }
-    .hero-badge p { font-size: 0.95rem; color: var(--text-body); font-weight: 500; }
+    .collage-main {
+      width: 320px; height: 320px; object-fit: cover; border-radius: 24px;
+      position: absolute; top: 40px; left: 40px;
+      box-shadow: 0 20px 60px rgba(30,17,9,0.15);
+      border: 4px solid var(--white);
+    }
+    .collage-sm {
+      width: 130px; height: 130px; object-fit: cover; border-radius: 16px;
+      position: absolute; border: 3px solid var(--white);
+      box-shadow: 0 8px 25px rgba(30,17,9,0.12);
+    }
+    .collage-sm-1 { top: -10px; right: -10px; }
+    .collage-sm-2 { bottom: -10px; left: -10px; }
+    .collage-sm-3 { bottom: 30px; right: -20px; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--dark); padding: 2.5rem 1.5rem;
+    }
+    .stats-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; justify-content: space-around; text-align: center;
+      gap: 2rem;
+    }
+    .stat-item {}
+    .stat-number {
+      font-size: 2.2rem; font-weight: 700; color: var(--yellow-bold);
+      font-family: 'Dancing Script', cursive;
+    }
+    .stat-label {
+      font-size: 0.85rem; color: rgba(255,255,255,0.7);
+      margin-top: 0.25rem; font-weight: 500;
+    }
     .hero-float-1, .hero-float-2 {
       position: absolute; background: var(--white);
       padding: 1rem 1.5rem; border-radius: 16px;
@@ -170,10 +196,12 @@
     }
     .story-image {
       width: 100%; aspect-ratio: 4/3;
-      background: linear-gradient(135deg, var(--yellow-light), var(--beige));
       border-radius: 20px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 5rem;
+      overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px;
+    }
+    .story-image img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .story-content p {
       font-size: 1.05rem; color: var(--text-body); line-height: 1.8;
@@ -300,6 +328,7 @@
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 0.85rem; color: var(--dark);
     }
+    .testimonial-stars { color: var(--yellow-bold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; }
     .testimonial-name { font-weight: 600; font-size: 0.9rem; }
     .testimonial-loc { font-size: 0.8rem; color: var(--text-light); }
 
@@ -375,7 +404,12 @@
       .hero-text h1 .script { font-size: 3rem; }
       .hero-text p { margin-left: auto; margin-right: auto; }
       .hero-buttons { justify-content: center; }
-      .hero-badge { width: 280px; height: 280px; margin: 0 auto; }
+      .hero-collage { width: 300px; height: 300px; margin: 0 auto; }
+      .collage-main { width: 240px; height: 240px; top: 30px; left: 30px; }
+      .collage-sm { width: 100px; height: 100px; }
+      .collage-sm-3 { bottom: 10px; right: -5px; }
+      .stats-inner { flex-direction: row; flex-wrap: wrap; }
+      .stat-number { font-size: 1.8rem; }
       .hero-float-1, .hero-float-2 { display: none; }
       .story-grid, .community-inner { grid-template-columns: 1fr; gap: 2rem; }
       .testimonials-grid { grid-template-columns: 1fr; }
@@ -446,15 +480,39 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-badge">
-          <span class="script">Made Fresh</span>
-          <p>Every single batch, handcrafted<br>in our home kitchen</p>
+        <div class="hero-collage">
+          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="collage-main">
+          <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="collage-sm collage-sm-1">
+          <img src="images/products/cheddar-jalapeno.jpeg" alt="Cheddar Jalapeno Sourdough" class="collage-sm collage-sm-2">
+          <img src="images/products/tom-yum-nuts.jpeg" alt="Tom Yum Nuts" class="collage-sm collage-sm-3">
         </div>
-        <div class="hero-float-1"><span>🍞</span> 27+ Products</div>
+        <div class="hero-float-1"><span>🍞</span> 26 Varieties</div>
         <div class="hero-float-2"><span>📍</span> Colaba, Mumbai</div>
       </div>
     </div>
   </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number">600+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3,400+</div>
+        <div class="stat-label">Orders Delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">19</div>
+        <div class="stat-label">Months of Fresh Baking</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Homemade with Love</div>
+      </div>
+    </div>
+  </div>
 
   <!-- OUR STORY -->
   <section class="story" id="story">
@@ -462,7 +520,12 @@
       <div class="section-label">Our Story</div>
       <div class="section-title">A Kitchen Full of <span class="script">Love</span></div>
       <div class="story-grid">
-        <div class="story-image">🏠</div>
+        <div class="story-image">
+          <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" loading="lazy">
+          <img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" loading="lazy">
+          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" loading="lazy">
+          <img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" loading="lazy">
+        </div>
         <div class="story-content">
           <p>Swati's journey with baking began not in a fancy kitchen, but in the heart of a home. Years ago, a passion for creating delicious, comforting food ignited a spark that turned into The Homestyle Bakery.</p>
           <p>Inspired by the warmth of <span class="highlight">"ghar ka khanna"</span> (home-cooked food), THSB is built on the belief that good food is made with love, the finest ingredients, and a touch of magic.</p>
@@ -768,31 +831,34 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card">
-          <p>The vada pav buns are absolutely incredible — they taste just like home. We order every week without fail!</p>
+          <p>The vada pav buns are absolutely incredible — they taste just like home. We order every week without fail! The kids love them as much as the adults.</p>
+          <div class="testimonial-stars">★★★★★</div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">R</div>
+            <div class="testimonial-avatar">MV</div>
             <div>
-              <div class="testimonial-name">— Customer Review</div>
-              <div class="testimonial-loc">Colaba, Mumbai</div>
+              <div class="testimonial-name">Repeat Customer</div>
+              <div class="testimonial-loc">Colaba, Mumbai · 26 orders</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
-          <p>The mixed seeds chikki is the best I've ever had. I keep ordering it as gifts — everyone loves it.</p>
+          <p>The mixed seeds chikki is the best I've ever had. I keep ordering it as gifts for friends and family — everyone asks where it's from.</p>
+          <div class="testimonial-stars">★★★★★</div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">S</div>
+            <div class="testimonial-avatar">MB</div>
             <div>
-              <div class="testimonial-name">— Customer Review</div>
-              <div class="testimonial-loc">Mumbai</div>
+              <div class="testimonial-name">Loyal Customer</div>
+              <div class="testimonial-loc">Mumbai · 47 orders</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
-          <p>Finally a gluten-free bread that actually tastes good! Swati's sourdough has changed my mornings.</p>
+          <p>Finally a gluten-free bread that actually tastes good! The sourdough here has genuinely changed my mornings. Can't go back to store-bought.</p>
+          <div class="testimonial-stars">★★★★★</div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">P</div>
+            <div class="testimonial-avatar">NK</div>
             <div>
-              <div class="testimonial-name">— Customer Review</div>
+              <div class="testimonial-name">WhatsApp Customer</div>
               <div class="testimonial-loc">South Mumbai</div>
             </div>
           </div>
@@ -816,7 +882,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <h3>The Homestyle Bakery</h3>
-        <p>Handcrafted with love in Colaba, Mumbai. Bringing the joy of familiar flavors to your doorstep since day one.</p>
+        <p>Handcrafted with love in Colaba, Mumbai. Bringing the joy of familiar flavors to your doorstep since 2024.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
@@ -858,13 +924,19 @@
       nav.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Fade-in on scroll
+    // Fade-in on scroll — threshold 0 so elements at bottom of viewport still trigger
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0, rootMargin: '0px 0px 50px 0px' });
     document.querySelectorAll('.menu-card, .community-card, .testimonial-card, .story-content, .story-image').forEach(el => {
       el.classList.add('fade-in');
-      observer.observe(el);
+      // If element is already in viewport on page load, show immediately
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
     });
 
     // Close mobile menu on link click
