@@ -534,21 +534,10 @@
     .wa-float { animation: pulse 2s ease-in-out infinite; }
 
     /* ── ANIMATIONS ── */
+    /* All content is visible by default. Animations are enhancement only. */
     .fade-in {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 1; transform: translateY(0);
     }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    /* Staggered delays for grid children */
-    .fade-in.stagger-1 { transition-delay: 0.08s; }
-    .fade-in.stagger-2 { transition-delay: 0.16s; }
-    .fade-in.stagger-3 { transition-delay: 0.24s; }
-    .fade-in.stagger-4 { transition-delay: 0.32s; }
-    .fade-in.stagger-5 { transition-delay: 0.40s; }
-    .fade-in.stagger-6 { transition-delay: 0.48s; }
-    .fade-in.stagger-7 { transition-delay: 0.56s; }
-    .fade-in.stagger-8 { transition-delay: 0.64s; }
-    .fade-in.stagger-9 { transition-delay: 0.72s; }
   </style>
 </head>
 <body>
@@ -1065,40 +1054,8 @@
       scrollProgress.style.width = scrollPercent + '%';
     });
 
-    // ── FADE-IN ON SCROLL with staggered delays ──
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px 50px 0px' });
-
-    // Add stagger classes to grid children
-    document.querySelectorAll('.menu-grid, .testimonials-grid, .community-cards').forEach(grid => {
-      grid.children && Array.from(grid.children).forEach((child, i) => {
-        child.classList.add('fade-in', 'stagger-' + Math.min(i, 9));
-      });
-    });
-
-    // Also fade in story and section titles (but NOT hero elements)
-    document.querySelectorAll('.story-content, .story-image, .section-label, .section-title, .menu-section-title').forEach(el => {
-      // Skip anything inside the hero section
-      if (!el.closest('.hero')) {
-        el.classList.add('fade-in');
-      }
-    });
-
-    // Observe all fade-in elements
-    document.querySelectorAll('.fade-in').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.classList.add('visible');
-      } else {
-        observer.observe(el);
-      }
-    });
+    // ── No fade-in system. All content is visible by default. ──
+    // Subtle hover/interaction effects are handled by CSS only.
 
     // ── ANIMATED COUNTERS (stats bar) ──
     function animateCounter(el) {
