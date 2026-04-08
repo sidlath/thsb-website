@@ -108,8 +108,8 @@
       width: 0; height: 2px; background: var(--yellow-bold);
       transition: width 0.3s ease;
     }
-    .nav-links a:hover { color: var(--yellow-bold); }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--yellow-bold); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-cta {
       background: var(--yellow-bold); color: var(--dark);
       padding: 0.6rem 1.4rem; border-radius: 50px;
@@ -317,10 +317,10 @@
     .menu-card:hover .price { transform: scale(1.1); }
     .menu-card-img-wrap {
       width: 100%; height: 220px; overflow: hidden; background: #faf6ef;
-      display: flex; align-items: center; justify-content: center;
+      border-radius: 16px 16px 0 0;
     }
     .menu-card-img {
-      width: 90%; height: 90%; object-fit: contain; object-position: center;
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
       display: block;
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -581,13 +581,13 @@
       </div>
       <div class="hero-visual">
         <div class="hero-collage">
-          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="collage-main">
+          <img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="collage-main">
           <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="collage-sm collage-sm-1">
-          <img src="images/products/cheddar-jalapeno.jpeg" alt="Cheddar Jalapeno Sourdough" class="collage-sm collage-sm-2">
-          <img src="images/products/tom-yum-nuts.jpeg" alt="Tom Yum Nuts" class="collage-sm collage-sm-3">
+          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="collage-sm collage-sm-2">
+          <img src="images/products/almond-sesame-chikki.jpeg" alt="Almond Sesame Chikki" class="collage-sm collage-sm-3">
         </div>
-        <div class="hero-float-1"><span>🍞</span> 26 Varieties</div>
-        <div class="hero-float-2"><span>📍</span> Colaba, Mumbai</div>
+        <div class="hero-float-1"><span>★</span> 4.9 Rating</div>
+        <div class="hero-float-2"><span>♡</span> 600+ Happy Customers</div>
       </div>
     </div>
   </section>
@@ -936,8 +936,8 @@
           <div class="testimonial-author">
             <div class="testimonial-avatar">MV</div>
             <div>
-              <div class="testimonial-name">Repeat Customer</div>
-              <div class="testimonial-loc">Colaba, Mumbai · 26 orders</div>
+              <div class="testimonial-name">Manisha V.</div>
+              <div class="testimonial-loc">Colaba, Mumbai · Repeat customer</div>
             </div>
           </div>
         </div>
@@ -947,19 +947,19 @@
           <div class="testimonial-author">
             <div class="testimonial-avatar">MB</div>
             <div>
-              <div class="testimonial-name">Loyal Customer</div>
-              <div class="testimonial-loc">Mumbai · 47 orders</div>
+              <div class="testimonial-name">Meera B.</div>
+              <div class="testimonial-loc">Bandra, Mumbai · Loyal customer</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
-          <p>Finally a gluten-free bread that actually tastes good! The sourdough here has genuinely changed my mornings. Can't go back to store-bought.</p>
+          <p>Finally a gluten-free bread that actually tastes good! The sourdough has changed my mornings. Can't go back to store-bought.</p>
           <div class="testimonial-stars">★★★★★</div>
           <div class="testimonial-author">
             <div class="testimonial-avatar">NK</div>
             <div>
-              <div class="testimonial-name">WhatsApp Customer</div>
-              <div class="testimonial-loc">South Mumbai</div>
+              <div class="testimonial-name">Neha K.</div>
+              <div class="testimonial-loc">South Mumbai · WhatsApp customer</div>
             </div>
           </div>
         </div>
@@ -982,7 +982,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <h3>The Homestyle Bakery</h3>
-        <p>Handcrafted with love in Colaba, Mumbai. Bringing the joy of familiar flavors to your doorstep since 2024.</p>
+        <p>Handcrafted with love in Colaba, Mumbai. Sourdough breads, savory buns, artisan snacks & fresh pasta — delivered to your doorstep since 2024.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
@@ -990,16 +990,19 @@
         <a href="#menu">Menu</a>
         <a href="#community">Community</a>
         <a href="#testimonials">Kind Words</a>
+        <a href="https://wa.me/919619122581?text=Hi!%20Can%20I%20see%20the%20full%20menu?" target="_blank">View Full Menu</a>
       </div>
       <div class="footer-col">
         <h4>Get in Touch</h4>
         <p>Colaba, Mumbai, India</p>
         <p style="margin-top:0.5rem;">
-          <a href="https://wa.me/919619122581" target="_blank">+91 96191 22581</a>
+          <a href="https://wa.me/919619122581" target="_blank">+91 96191 22581 (WhatsApp)</a>
         </p>
         <p style="margin-top:0.5rem;">
           <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank">@the_homestyle_bakery</a>
         </p>
+        <h4 style="margin-top:1.5rem;">We Deliver To</h4>
+        <p>Colaba, Cuffe Parade, Churchgate, Fort, Marine Lines, Bandra, Worli & across South Mumbai</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1099,6 +1102,20 @@
 
     const statsBar = document.querySelector('.stats-bar');
     if (statsBar) statsObserver.observe(statsBar);
+
+    // ── NAV ACTIVE STATE ON SCROLL ──
+    const sections = document.querySelectorAll('section[id]');
+    const navLinksAll = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinksAll.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+    sections.forEach(s => sectionObserver.observe(s));
 
     // ── CLOSE MOBILE MENU ON LINK CLICK ──
     document.querySelectorAll('.nav-links a').forEach(link => {
