@@ -689,10 +689,188 @@
     .wa-float svg { width: 32px; height: 32px; fill: white; }
     .wa-float { animation: pulse 2s ease-in-out infinite; }
 
+    /* ── DELIVERY BANNER ── */
+    .delivery-banner {
+      background: var(--cream); padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(30,17,9,0.06);
+    }
+    .delivery-banner-inner {
+      max-width: 1100px; margin: 0 auto; text-align: center;
+      font-size: 0.95rem; color: var(--text-body); line-height: 1.7;
+    }
+    .delivery-banner-inner strong { color: var(--dark); }
+    .delivery-zones {
+      display: inline-flex; gap: 0.5rem; flex-wrap: wrap;
+      justify-content: center; margin: 0 0.25rem;
+    }
+    .delivery-zone {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      background: var(--white); padding: 0.2rem 0.6rem; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 500; white-space: nowrap;
+    }
+    .delivery-zone::before { content: '📍'; font-size: 0.75rem; }
+    .delivery-details {
+      margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-light);
+    }
+
+    /* ── FOUNDER PHOTO ── */
+    .founder-photo-wrap {
+      width: 140px; height: 140px; border-radius: 50%; overflow: hidden;
+      margin-bottom: 1.5rem; border: 4px solid var(--yellow-light);
+      box-shadow: 0 8px 25px rgba(30,17,9,0.1);
+    }
+    .founder-photo-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .founder-photo-placeholder {
+      width: 100%; height: 100%;
+      background: #f5e6d0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.25rem;
+      color: var(--text-light); font-size: 0.7rem; font-weight: 500;
+    }
+    .founder-photo-placeholder svg {
+      width: 28px; height: 28px; opacity: 0.5;
+    }
+
+    /* ── HOW TO ORDER ── */
+    .how-to-order { background: var(--white); }
+    .how-to-order-header { text-align: center; margin-bottom: 3rem; }
+    .how-to-order-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem;
+      max-width: 900px; margin: 0 auto 3rem;
+      position: relative;
+    }
+    .how-to-order-steps::before {
+      content: ''; position: absolute; top: 40px;
+      left: 15%; right: 15%; height: 2px;
+      background: linear-gradient(90deg, var(--yellow-bold), var(--beige));
+      z-index: 0;
+    }
+    .order-step {
+      text-align: center; position: relative; z-index: 1;
+    }
+    .order-step-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--cream); margin: 0 auto 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+      border: 3px solid var(--yellow-bold);
+      transition: all 0.3s ease;
+    }
+    .order-step:hover .order-step-icon {
+      background: var(--yellow-bold);
+      transform: scale(1.08);
+    }
+    .order-step:hover .order-step-icon svg { fill: var(--dark); }
+    .order-step-icon svg { width: 32px; height: 32px; fill: var(--yellow-bold); transition: fill 0.3s; }
+    .order-step-num {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--yellow-bold); margin-bottom: 0.5rem;
+    }
+    .order-step h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .order-step p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; max-width: 250px; margin: 0 auto; }
+    .how-to-order-cta { text-align: center; }
+
+    /* ── LIST CAPTURE ── */
+    .list-capture {
+      background: var(--cream); padding: 4rem 1.5rem;
+      border-top: 1px solid rgba(30,17,9,0.06);
+    }
+    .list-capture-inner {
+      max-width: 600px; margin: 0 auto; text-align: center;
+    }
+    .list-capture h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .list-capture .list-sub {
+      font-size: 1rem; color: var(--text-light); line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .list-form {
+      display: flex; flex-direction: column; gap: 0.75rem; max-width: 420px; margin: 0 auto;
+    }
+    .list-form input {
+      padding: 0.85rem 1.25rem; border-radius: 12px;
+      border: 2px solid rgba(30,17,9,0.12); background: var(--white);
+      font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      color: var(--dark); transition: border-color 0.2s;
+    }
+    .list-form input:focus { border-color: var(--yellow-bold); outline: none; }
+    .list-form input::placeholder { color: var(--text-light); }
+    .list-form-btn {
+      padding: 0.85rem 2rem; border-radius: 50px;
+      background: var(--yellow-bold); color: var(--dark);
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+      border: none; cursor: pointer; transition: all 0.25s;
+    }
+    .list-form-btn:hover { background: var(--yellow-light); transform: translateY(-2px); }
+    .list-form-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .list-success {
+      display: none; padding: 1.5rem; background: rgba(37,211,102,0.08);
+      border-radius: 12px; color: #2e7d32; font-weight: 600; font-size: 1rem;
+    }
+    .list-success.show { display: block; }
+    .list-error {
+      display: none; padding: 0.75rem; color: #c62828; font-size: 0.85rem;
+    }
+    .list-error.show { display: block; }
+
+    /* ── REVIEW LINK ── */
+    .review-link-wrap {
+      text-align: center; margin-top: 2.5rem;
+    }
+    .review-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--yellow-bold); font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; transition: all 0.2s;
+      padding: 0.6rem 1.4rem; border-radius: 50px;
+      border: 2px solid var(--yellow-bold);
+    }
+    .review-link:hover {
+      background: var(--yellow-bold); color: var(--dark);
+    }
+    .review-link svg { width: 16px; height: 16px; }
+
+    /* ── NAV CALL LINK ── */
+    .nav-call {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none; color: var(--text-body); font-size: 0.85rem; font-weight: 500;
+      padding: 0.5rem 1rem; border-radius: 50px; transition: all 0.2s;
+      min-height: 44px;
+    }
+    .nav-call:hover { color: var(--yellow-bold); }
+    .nav-call svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ── FOCUS STATES ── */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible,
+    .menu-cat-btn:focus-visible, .nav-cta:focus-visible, .btn-primary:focus-visible,
+    .btn-secondary:focus-visible, .btn-whatsapp:focus-visible, .wa-float:focus-visible,
+    .review-link:focus-visible, .list-form-btn:focus-visible, .nav-call:focus-visible {
+      outline: 2px solid var(--yellow-bold);
+      outline-offset: 2px;
+    }
+
     /* ── ANIMATIONS ── */
     /* All content is visible by default. Animations are enhancement only. */
     .fade-in {
       opacity: 1; transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .delivery-zones { display: none; }
+      .delivery-zones-mobile {
+        display: flex; gap: 0.5rem; overflow-x: auto;
+        padding: 0.5rem 0; margin-top: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .delivery-zones-mobile::-webkit-scrollbar { display: none; }
+      .delivery-zones-mobile .delivery-zone { flex-shrink: 0; }
+      .how-to-order-steps { grid-template-columns: 1fr; gap: 2rem; }
+      .how-to-order-steps::before { display: none; }
+      .list-form { max-width: 100%; }
+      .nav-call-desktop { display: none; }
+    }
+    @media (min-width: 901px) {
+      .delivery-zones-mobile { display: none; }
+      .nav-call-mobile { display: none; }
     }
   </style>
 </head>
@@ -706,17 +884,25 @@
     <div class="nav-inner">
       <img src="thsb-logo.jpeg" alt="The Homestyle Bakery" class="nav-logo" width="70" height="70">
       <ul class="nav-links" id="navLinks">
-        <button class="menu-close" aria-label="Close menu">&times;</button>
+        <button class="menu-close" aria-label="Close navigation menu">&times;</button>
         <li><a href="#story">Our Story</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#community">Community</a></li>
         <li><a href="#testimonials">Kind Words</a></li>
+        <li class="nav-call-mobile"><a href="tel:+919619122581" class="nav-call" aria-label="Call Us">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Us
+        </a></li>
       </ul>
+      <a href="tel:+919619122581" class="nav-call nav-call-desktop" aria-label="Call Us">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call Us
+      </a>
       <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20place%20an%20order" class="nav-cta" target="_blank" data-track="whatsapp_click" data-track-label="nav">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Order Now
       </a>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -780,6 +966,32 @@
     </div>
   </div>
 
+  <!-- DELIVERY BANNER -->
+  <div class="delivery-banner">
+    <div class="delivery-banner-inner">
+      <strong>📍 Delivering daily across South Mumbai</strong> —
+      <span class="delivery-zones">
+        <span class="delivery-zone">Colaba</span>
+        <span class="delivery-zone">Cuffe Parade</span>
+        <span class="delivery-zone">Churchgate</span>
+        <span class="delivery-zone">Fort</span>
+        <span class="delivery-zone">Marine Lines</span>
+        <span class="delivery-zone">Bandra</span>
+        <span class="delivery-zone">Worli</span>
+      </span>
+      <div class="delivery-zones-mobile">
+        <span class="delivery-zone">Colaba</span>
+        <span class="delivery-zone">Cuffe Parade</span>
+        <span class="delivery-zone">Churchgate</span>
+        <span class="delivery-zone">Fort</span>
+        <span class="delivery-zone">Marine Lines</span>
+        <span class="delivery-zone">Bandra</span>
+        <span class="delivery-zone">Worli</span>
+      </div>
+      <div class="delivery-details">Minimum order ₹500. Same-day delivery on orders before 11 AM.</div>
+    </div>
+  </div>
+
   <!-- OUR STORY -->
   <section class="story" id="story">
     <div class="section-inner">
@@ -793,6 +1005,15 @@
           <img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" loading="lazy" width="800" height="800">
         </div>
         <div class="story-content">
+          <!-- TODO: Drop founder photo into images/swati-founder.jpeg (recommended: 280x280px or larger, square crop) -->
+          <div class="founder-photo-wrap">
+            <img src="images/swati-founder.jpeg" alt="Swati, founder of The Homestyle Bakery, in her kitchen"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="founder-photo-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              Founder photo
+            </div>
+          </div>
           <p>Swati's journey with baking began not in a fancy kitchen, but in the heart of a home. Years ago, a passion for creating delicious, comforting food ignited a spark that turned into The Homestyle Bakery.</p>
           <p>The Homestyle Bakery is built on the belief that good food is made with love, the finest ingredients, and a touch of magic — the kind you only find in a home kitchen.</p>
           <p>Remember that first bite of a perfectly fluffy vada pav bun, bursting with flavor? That's the experience we want to share with every customer — a taste of home in every bite.</p>
@@ -907,28 +1128,28 @@
           <div class="menu-card" data-category="sourdough-breads">
             <div class="menu-card-img-wrap"><img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Khapli Wheat Sourdough</h3><span class="price">₹350</span></div>
+              <div class="menu-card-header"><h3>Khapli Wheat Sourdough</h3><span class="price">₹350/loaf</span></div>
               <p>Traditional emmer wheat sourdough, slow-fermented for 48 hours. 466gms.</p>
             </div>
           </div>
           <div class="menu-card" data-category="sourdough-breads">
             <div class="menu-card-img-wrap"><img src="images/products/jowar-khapli-sourdough.jpeg" alt="Jowar & Khapli Wheat" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Jowar & Khapli Wheat</h3><span class="price">₹350</span></div>
+              <div class="menu-card-header"><h3>Jowar & Khapli Wheat</h3><span class="price">₹350/loaf</span></div>
               <p>A nutritious blend of jowar and khapli wheat, naturally leavened. 420gms.</p>
             </div>
           </div>
           <div class="menu-card" data-category="sourdough-breads">
             <div class="menu-card-img-wrap"><img src="images/products/jowar-seeded-sourdough.jpeg" alt="Jowar & Khapli Seeded" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Jowar & Khapli Seeded</h3><span class="price">₹450</span></div>
+              <div class="menu-card-header"><h3>Jowar & Khapli Seeded</h3><span class="price">₹450/loaf</span></div>
               <p>Our signature jowar blend topped with a generous seed crust. 500gms.</p>
             </div>
           </div>
           <div class="menu-card" data-category="sourdough-breads">
             <div class="menu-card-img-wrap"><img src="images/products/cheddar-jalapeno.jpeg" alt="Cheddar Jalapeno Sourdough" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Cheddar Jalapeno Sourdough</h3><span class="price">₹550</span></div>
+              <div class="menu-card-header"><h3>Cheddar Jalapeno Sourdough</h3><span class="price">₹550/loaf</span></div>
               <p>Sharp cheddar and spicy jalapeno baked into a tangy sourdough. 500gms.</p>
               <span class="tag tag-popular">Popular</span>
             </div>
@@ -936,14 +1157,14 @@
           <div class="menu-card" data-category="sourdough-breads">
             <div class="menu-card-img-wrap"><img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Pesto Sourdough</h3><span class="price">₹550</span></div>
+              <div class="menu-card-header"><h3>Pesto Sourdough</h3><span class="price">₹550/loaf</span></div>
               <p>Fragrant basil pesto swirled through our classic sourdough. 500gms.</p>
             </div>
           </div>
           <div class="menu-card" data-category="sourdough-breads">
             <div class="menu-card-img-wrap"><img src="images/products/gluten-free-bread.jpeg" alt="Gluten-Free Bread" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Gluten-Free Bread</h3><span class="price">₹550</span></div>
+              <div class="menu-card-header"><h3>Gluten-Free Bread</h3><span class="price">₹550/loaf</span></div>
               <p>Made with alternative flours for those with gluten sensitivities. 500gms.</p>
               <span class="tag tag-gf">Gluten-Free</span>
             </div>
@@ -951,7 +1172,7 @@
           <div class="menu-card" data-category="sourdough-breads">
             <div class="menu-card-img-wrap"><img src="images/products/gluten-free-seeded.jpeg" alt="Gluten-Free Seeded Bread" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Gluten-Free Seeded Bread</h3><span class="price">₹650</span></div>
+              <div class="menu-card-header"><h3>Gluten-Free Seeded Bread</h3><span class="price">₹650/loaf</span></div>
               <p>Our gluten-free bread loaded with a nutritious seed crust. 500gms.</p>
               <span class="tag tag-gf">Gluten-Free</span>
             </div>
@@ -966,7 +1187,7 @@
           <div class="menu-card" data-category="artisan-snacks">
             <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Mixed Seeds Chikki</h3><span class="price">₹750</span></div>
+              <div class="menu-card-header"><h3>Mixed Seeds Chikki</h3><span class="price">₹750/250g</span></div>
               <p>Crunchy, nutty, and naturally sweetened. Our #1 best seller. 250gms.</p>
               <span class="tag tag-popular">No. 1 Seller</span>
             </div>
@@ -974,14 +1195,14 @@
           <div class="menu-card" data-category="artisan-snacks">
             <div class="menu-card-img-wrap"><img src="images/products/almond-sesame-chikki.jpeg" alt="Roasted Almond & Sesame Chikki" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Roasted Almond & Sesame Chikki</h3><span class="price">₹900</span></div>
+              <div class="menu-card-header"><h3>Roasted Almond & Sesame Chikki</h3><span class="price">₹900/250g</span></div>
               <p>Premium almonds and sesame in a perfectly caramelized chikki. 250gms.</p>
             </div>
           </div>
           <div class="menu-card" data-category="artisan-snacks">
             <div class="menu-card-img-wrap"><img src="images/products/tom-yum-nuts.jpeg" alt="Tom Yum Nuts" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Tom Yum Nuts</h3><span class="price">₹700</span></div>
+              <div class="menu-card-header"><h3>Tom Yum Nuts</h3><span class="price">₹700/200g</span></div>
               <p>Roasted nuts tossed in a Thai-inspired tom yum seasoning. Addictive! 200gms.</p>
               <span class="tag tag-popular">Popular</span>
             </div>
@@ -989,14 +1210,14 @@
           <div class="menu-card" data-category="artisan-snacks">
             <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-crackers.jpeg" alt="Mixed Seeds Crackers" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Mixed Seeds Crackers</h3><span class="price">₹250</span></div>
+              <div class="menu-card-header"><h3>Mixed Seeds Crackers</h3><span class="price">₹250/pack</span></div>
               <p>Thin, crispy, and packed with seeds. Perfect with dips. 75gms.</p>
             </div>
           </div>
           <div class="menu-card" data-category="artisan-snacks">
             <div class="menu-card-img-wrap"><img src="images/products/jowar-wholewheat-crackers.jpeg" alt="Jowar & Wholewheat Crackers" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Jowar & Wholewheat Crackers</h3><span class="price">₹250</span></div>
+              <div class="menu-card-header"><h3>Jowar & Wholewheat Crackers</h3><span class="price">₹250/pack</span></div>
               <p>Wholesome crackers made with jowar and wholewheat flour. 100gms.</p>
             </div>
           </div>
@@ -1010,28 +1231,28 @@
           <div class="menu-card" data-category="pasta-sauces">
             <div class="menu-card-img-wrap"><img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Fresh Pasta</h3><span class="price">₹300</span></div>
+              <div class="menu-card-header"><h3>Fresh Pasta</h3><span class="price">₹300/pack</span></div>
               <p>Handmade fresh pasta — just cook for 3 minutes and pair with our sauces.</p>
             </div>
           </div>
           <div class="menu-card" data-category="pasta-sauces">
             <div class="menu-card-img-wrap"><img src="images/products/pesto-sauce.jpeg" alt="Pesto Sauce" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Pesto Sauce</h3><span class="price">₹550</span></div>
+              <div class="menu-card-header"><h3>Pesto Sauce</h3><span class="price">₹550/jar</span></div>
               <p>Fresh basil, pine nuts, and parmesan blended into a vibrant green pesto.</p>
             </div>
           </div>
           <div class="menu-card" data-category="pasta-sauces">
             <div class="menu-card-img-wrap"><img src="images/products/marinara-sauce.jpeg" alt="Marinara Sauce" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Marinara Sauce</h3><span class="price">₹450</span></div>
+              <div class="menu-card-header"><h3>Marinara Sauce</h3><span class="price">₹450/jar</span></div>
               <p>Slow-cooked tomato sauce with garlic and Italian herbs.</p>
             </div>
           </div>
           <div class="menu-card" data-category="pasta-sauces">
             <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-sauce.jpeg" alt="Aglio e Olio Sauce" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Aglio e Olio Sauce</h3><span class="price">₹550</span></div>
+              <div class="menu-card-header"><h3>Aglio e Olio Sauce</h3><span class="price">₹550/jar</span></div>
               <p>Garlic-infused olive oil with chilli flakes — simple and sublime.</p>
             </div>
           </div>
@@ -1045,20 +1266,62 @@
           <div class="menu-card" data-category="dips">
             <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-dip.jpeg" alt="Aglio Olio Dip" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Aglio Olio Dip</h3><span class="price">₹500</span></div>
+              <div class="menu-card-header"><h3>Aglio Olio Dip</h3><span class="price">₹500/jar</span></div>
               <p>A rich, garlicky dip perfect with our crackers and breads. 125gms.</p>
             </div>
           </div>
           <div class="menu-card" data-category="dips">
             <div class="menu-card-img-wrap"><img src="images/products/olive-tapenade.jpeg" alt="Olive Tapenade" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
-              <div class="menu-card-header"><h3>Olive Tapenade</h3><span class="price">₹500</span></div>
+              <div class="menu-card-header"><h3>Olive Tapenade</h3><span class="price">₹500/jar</span></div>
               <p>Briny, savory olive tapenade — a Mediterranean classic. 125gms.</p>
             </div>
           </div>
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section class="how-to-order" id="how-to-order">
+    <div class="section-inner">
+      <div class="how-to-order-header">
+        <div class="section-label">How to Order</div>
+        <div class="section-title">Three Simple <span class="script">Steps</span></div>
+      </div>
+      <div class="how-to-order-steps">
+        <div class="order-step">
+          <div class="order-step-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+          </div>
+          <div class="order-step-num">Step 1</div>
+          <h3>Browse the Menu</h3>
+          <p>Explore our range of freshly baked sourdoughs, savory buns, snacks, and more — all made from scratch.</p>
+        </div>
+        <div class="order-step">
+          <div class="order-step-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+          </div>
+          <div class="order-step-num">Step 2</div>
+          <h3>WhatsApp Your Order</h3>
+          <p>Send us a message on WhatsApp with your picks. We'll confirm availability and delivery details instantly.</p>
+        </div>
+        <div class="order-step">
+          <div class="order-step-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 7c0-1.1-.9-2-2-2h-3v2h3v2.65L13.52 14H10V9H6c-2.21 0-4 1.79-4 4v3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4.48L19 10.35V7zM7 17c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1z"/><path d="M5 6h5v2H5zm14 7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 4c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+          </div>
+          <div class="order-step-num">Step 3</div>
+          <h3>Fresh Delivery to Your Door</h3>
+          <p>Your order is baked fresh and delivered the same day across South Mumbai. Enjoy homemade goodness!</p>
+        </div>
+      </div>
+      <div class="how-to-order-cta">
+        <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20place%20an%20order" class="btn-primary" target="_blank" data-track="whatsapp_click" data-track-label="how_to_order">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order Now on WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1141,6 +1404,28 @@
           </div>
         </div>
       </div>
+      <!-- TODO: Replace href with real Google Business Profile reviews URL once set up -->
+      <div class="review-link-wrap">
+        <a href="https://g.page/r/the-homestyle-bakery" class="review-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Read more reviews on Google
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIST CAPTURE -->
+  <section class="list-capture" id="list-capture">
+    <div class="list-capture-inner">
+      <h2>Be the first to <span class="script">know</span></h2>
+      <p class="list-sub">Get early access to new launches, festive hampers, and bakery stories — straight to your WhatsApp or inbox.</p>
+      <form class="list-form" id="listForm" novalidate>
+        <input type="text" name="name" placeholder="Your name" required autocomplete="name">
+        <input type="text" name="contact" placeholder="WhatsApp number or email" required autocomplete="email tel">
+        <button type="submit" class="list-form-btn">Join the list</button>
+      </form>
+      <div class="list-success" id="listSuccess">Thanks! You're on the list. 🎉</div>
+      <div class="list-error" id="listError"></div>
     </div>
   </section>
 
@@ -1188,7 +1473,7 @@
         <h4>Get in Touch</h4>
         <p>Colaba, Mumbai, India</p>
         <p style="margin-top:0.5rem;">
-          <a href="https://wa.me/919619122581" target="_blank" data-track="whatsapp_click" data-track-label="footer">+91 96191 22581 (WhatsApp)</a>
+          <a href="tel:+919619122581">+91 96191 22581</a> · <a href="https://wa.me/919619122581" target="_blank" data-track="whatsapp_click" data-track-label="footer">WhatsApp</a>
         </p>
         <p style="margin-top:0.5rem;">
           <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" data-track="instagram_click">@the_homestyle_bakery</a>
@@ -1343,6 +1628,76 @@
         gtag('event', event, { label: label });
       });
     });
+
+    // ── LIST CAPTURE FORM ──
+    // TODO: Set up Google Apps Script endpoint:
+    //   1. Create a Google Sheet titled "THSB Website — List Signups"
+    //   2. Tools → Script editor → paste the code from _apps-script-list-capture.gs
+    //   3. Deploy → New deployment → Web app → Execute as Me → Anyone access
+    //   4. Copy the deployment URL and replace PLACEHOLDER below
+    const LIST_ENDPOINT = 'https://script.google.com/macros/s/PLACEHOLDER/exec';
+
+    const listForm = document.getElementById('listForm');
+    const listSuccess = document.getElementById('listSuccess');
+    const listError = document.getElementById('listError');
+
+    if (listForm) {
+      listForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = listForm.name.value.trim();
+        const contact = listForm.contact.value.trim();
+
+        // Validate
+        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+        const isPhone = /^(\+91[\s-]?)?[6-9]\d{9}$/.test(contact.replace(/[\s-]/g, ''));
+
+        if (!name || !contact) {
+          listError.textContent = 'Please fill in all fields.';
+          listError.classList.add('show');
+          return;
+        }
+        if (!isEmail && !isPhone) {
+          listError.textContent = 'Please enter a valid Indian phone number or email address.';
+          listError.classList.add('show');
+          return;
+        }
+
+        listError.classList.remove('show');
+        const btn = listForm.querySelector('.list-form-btn');
+        btn.disabled = true;
+        btn.textContent = 'Joining…';
+
+        try {
+          await fetch(LIST_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name,
+              contact: contact,
+              type: isEmail ? 'email' : 'whatsapp',
+              timestamp: new Date().toISOString(),
+              source: 'website'
+            })
+          });
+
+          listForm.style.display = 'none';
+          listSuccess.classList.add('show');
+
+          // GA4 event
+          if (typeof gtag === 'function') {
+            gtag('event', 'list_signup', {
+              method: isEmail ? 'email' : 'whatsapp'
+            });
+          }
+        } catch (err) {
+          listError.textContent = 'Something went wrong. Please try again.';
+          listError.classList.add('show');
+          btn.disabled = false;
+          btn.textContent = 'Join the list';
+        }
+      });
+    }
   </script>
 
   <!-- TODO: Replace G-XXXXXXXXXX with real GA4 measurement ID from analytics.google.com -->
