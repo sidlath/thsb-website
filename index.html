@@ -9,9 +9,121 @@
   <meta property="og:title" content="The Homestyle Bakery | Handcrafted with Love in Colaba, Mumbai">
   <meta property="og:description" content="Handcrafted sourdough breads, savory buns, artisan snacks & fresh pasta. Made with love. Delivered to your door.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://thsb-website.vercel.app/og-image.jpg">
+  <meta property="og:url" content="https://thsb-website.vercel.app/">
+  <meta property="og:site_name" content="The Homestyle Bakery">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Homestyle Bakery — Artisan Bakes from Colaba, Mumbai">
+  <meta name="twitter:description" content="Sourdough breads, savory buns, artisan snacks. Made fresh in Colaba. Order on WhatsApp.">
+  <meta name="twitter:image" content="https://thsb-website.vercel.app/og-image.jpg">
+  <link rel="canonical" href="https://thsb-website.vercel.app/">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- LocalBusiness + FoodEstablishment structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "Bakery", "FoodEstablishment"],
+    "name": "The Homestyle Bakery",
+    "url": "https://thsb-website.vercel.app",
+    "telephone": "+919619122581",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Colaba",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "priceRange": "₹250 - ₹1,200",
+    "servesCuisine": ["Indian", "Continental", "Bakery"],
+    "areaServed": [
+      "Colaba", "Cuffe Parade", "Churchgate", "Fort",
+      "Marine Lines", "Bandra", "Worli", "South Mumbai"
+    ],
+    "sameAs": ["https://www.instagram.com/the_homestyle_bakery/"],
+    "image": "https://thsb-website.vercel.app/og-image.jpg",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "600"
+    }
+  }
+  </script>
+
+  <!-- Product structured data for top 5 products -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Mixed Seeds Chikki",
+      "image": "https://thsb-website.vercel.app/images/products/mixed-seeds-chikki.jpeg",
+      "description": "Crunchy, nutty, and naturally sweetened. Our #1 best seller. 250gms.",
+      "offers": {
+        "@type": "Offer",
+        "price": "750",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Vada Pav Buns",
+      "image": "https://thsb-website.vercel.app/images/products/vada-pav.jpeg",
+      "description": "Our signature fluffy buns stuffed with spiced vada — the taste of Mumbai, reimagined. Dozen.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1200",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Tom Yum Nuts",
+      "image": "https://thsb-website.vercel.app/images/products/tom-yum-nuts.jpeg",
+      "description": "Roasted nuts tossed in a Thai-inspired tom yum seasoning. Addictive! 200gms.",
+      "offers": {
+        "@type": "Offer",
+        "price": "700",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Khapli Wheat Sourdough",
+      "image": "https://thsb-website.vercel.app/images/products/khapli-wheat-sourdough.jpeg",
+      "description": "Traditional emmer wheat sourdough, slow-fermented for 48 hours. 466gms.",
+      "offers": {
+        "@type": "Offer",
+        "price": "350",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Roasted Almond & Sesame Chikki",
+      "image": "https://thsb-website.vercel.app/images/products/almond-sesame-chikki.jpeg",
+      "description": "Premium almonds and sesame in a perfectly caramelized chikki. 250gms.",
+      "offers": {
+        "@type": "Offer",
+        "price": "900",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+  </script>
+
   <style>
     :root {
       --yellow-light: #f8c359;
@@ -116,6 +228,7 @@
       text-decoration: none; font-weight: 600; font-size: 0.85rem;
       transition: all 0.2s;
       display: inline-flex; align-items: center; gap: 0.4rem;
+      min-height: 44px;
     }
     .nav-cta:hover { background: var(--yellow-light); transform: translateY(-1px); }
 
@@ -124,6 +237,23 @@
       display: block; width: 24px; height: 2px; background: var(--dark);
       margin: 5px 0; transition: all 0.3s;
     }
+
+    /* ── MENU BACKDROP + CLOSE ── */
+    .menu-backdrop {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4); z-index: 98;
+    }
+    .menu-backdrop.open { display: block; }
+    .menu-close {
+      display: none;
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.8rem; color: var(--dark); line-height: 1;
+      width: 44px; height: 44px;
+      align-items: center; justify-content: center;
+    }
+    .nav-links.open .menu-close { display: flex; }
 
     /* ── HERO ── */
     .hero {
@@ -202,6 +332,11 @@
     .collage-sm-2 { bottom: -10px; left: -10px; }
     .collage-sm-3 { bottom: 30px; right: -20px; }
 
+    /* ── HERO BADGES (mobile pill row) ── */
+    .hero-badges {
+      display: none; /* shown on mobile only */
+    }
+
     /* ── STATS BAR ── */
     .stats-bar {
       background: var(--dark); padding: 2.5rem 1.5rem;
@@ -241,7 +376,8 @@
       background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: shimmer 3s linear infinite;
+      animation: shimmer 3s linear 1;
+      animation-fill-mode: forwards;
     }
     .section-title {
       font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;
@@ -458,6 +594,7 @@
       display: block; color: rgba(255,255,255,0.7);
       text-decoration: none; font-size: 0.9rem;
       margin-bottom: 0.6rem; transition: color 0.2s;
+      min-height: 44px; display: flex; align-items: center;
     }
     .footer-col a:hover { color: var(--yellow-light); }
     .footer-col p { font-size: 0.9rem; line-height: 1.6; }
@@ -470,7 +607,8 @@
     .footer-social { display: flex; gap: 1rem; }
     .footer-social a {
       color: rgba(255,255,255,0.5); transition: color 0.2s;
-      display: flex; align-items: center;
+      display: flex; align-items: center; justify-content: center;
+      min-width: 44px; min-height: 44px;
     }
     .footer-social a:hover { color: var(--yellow-bold); }
 
@@ -484,6 +622,7 @@
       display: inline-flex; align-items: center; gap: 0.75rem;
       text-decoration: none; color: var(--dark); font-size: 0.95rem;
       transition: color 0.2s;
+      min-height: 44px;
     }
     .insta-bar-link:hover { color: var(--yellow-bold); }
     .insta-bar-link strong { color: var(--yellow-bold); }
@@ -494,11 +633,12 @@
       .hamburger { display: block; }
       .nav-links.open {
         display: flex; flex-direction: column;
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: var(--white); padding: 1.5rem;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--white); padding: 5rem 1.5rem 1.5rem;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        gap: 1rem;
+        gap: 1rem; z-index: 99;
       }
+      .nav-links.open .menu-close { display: flex; }
       .hero-inner { grid-template-columns: 1fr; text-align: center; }
       .hero-text h1 { font-size: 2.5rem; }
       .hero-text h1 .script { font-size: 3rem; }
@@ -510,7 +650,19 @@
       .collage-sm-3 { bottom: 10px; right: -5px; }
       .stats-inner { flex-direction: row; flex-wrap: wrap; }
       .stat-number { font-size: 1.8rem; }
+      /* Hero floating badges: hide desktop floats, show pill row */
       .hero-float-1, .hero-float-2 { display: none; }
+      .hero-badges {
+        display: flex; justify-content: center; gap: 0.75rem;
+        margin-top: 1.5rem; flex-wrap: wrap;
+      }
+      .hero-badge-pill {
+        background: var(--white); padding: 0.5rem 1rem; border-radius: 50px;
+        font-size: 0.78rem; font-weight: 500; color: var(--dark);
+        box-shadow: 0 4px 12px rgba(30,17,9,0.08);
+        display: inline-flex; align-items: center; gap: 0.35rem;
+      }
+      .hero-badge-pill span { font-size: 1rem; }
       .story-grid, .community-inner { grid-template-columns: 1fr; gap: 2rem; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -518,6 +670,10 @@
       .menu-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 2rem; }
       .cta-band h2 { font-size: 2rem; }
+      /* WA float smaller on mobile + content clearance */
+      .wa-float { width: 56px; height: 56px; bottom: 1.5rem; right: 1.5rem; }
+      .wa-float svg { width: 28px; height: 28px; }
+      footer { padding-bottom: calc(2rem + 90px); }
     }
 
     /* ── WHATSAPP FLOATING BTN ── */
@@ -548,22 +704,24 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-      <img src="thsb-logo.jpeg" alt="The Homestyle Bakery" class="nav-logo">
+      <img src="thsb-logo.jpeg" alt="The Homestyle Bakery" class="nav-logo" width="70" height="70">
       <ul class="nav-links" id="navLinks">
+        <button class="menu-close" aria-label="Close menu">&times;</button>
         <li><a href="#story">Our Story</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#community">Community</a></li>
         <li><a href="#testimonials">Kind Words</a></li>
       </ul>
-      <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20place%20an%20order" class="nav-cta" target="_blank">
+      <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20place%20an%20order" class="nav-cta" target="_blank" data-track="whatsapp_click" data-track-label="nav">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Order Now
       </a>
-      <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
+  <div class="menu-backdrop" id="menuBackdrop"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -575,19 +733,24 @@
         </h1>
         <p>Handcrafted sourdough breads, savory buns, artisan snacks & fresh pasta — made from scratch in our home kitchen in Colaba, Mumbai.</p>
         <div class="hero-buttons">
-          <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20place%20an%20order" class="btn-primary" target="_blank">
+          <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20place%20an%20order" class="btn-primary" target="_blank" data-track="whatsapp_click" data-track-label="hero">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Order on WhatsApp
           </a>
           <a href="#menu" class="btn-secondary">View Menu</a>
         </div>
+        <!-- Mobile-only badge pills (replaces hidden floating badges) -->
+        <div class="hero-badges">
+          <div class="hero-badge-pill"><span>★</span> 4.9 Rating</div>
+          <div class="hero-badge-pill"><span>♡</span> 600+ Happy Customers</div>
+        </div>
       </div>
       <div class="hero-visual">
         <div class="hero-collage">
-          <img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="collage-main">
-          <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="collage-sm collage-sm-1">
-          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="collage-sm collage-sm-2">
-          <img src="images/products/almond-sesame-chikki.jpeg" alt="Almond Sesame Chikki" class="collage-sm collage-sm-3">
+          <img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="collage-main" width="320" height="320">
+          <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="collage-sm collage-sm-1" width="130" height="130">
+          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="collage-sm collage-sm-2" width="130" height="130">
+          <img src="images/products/almond-sesame-chikki.jpeg" alt="Almond Sesame Chikki" class="collage-sm collage-sm-3" width="130" height="130">
         </div>
         <div class="hero-float-1"><span>★</span> 4.9 Rating</div>
         <div class="hero-float-2"><span>♡</span> 600+ Happy Customers</div>
@@ -624,10 +787,10 @@
       <div class="section-title">A Kitchen Full of <span class="script">Love</span></div>
       <div class="story-grid">
         <div class="story-image">
-          <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" loading="lazy">
-          <img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" loading="lazy">
-          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" loading="lazy">
-          <img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" loading="lazy">
+          <img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" loading="lazy" width="800" height="800">
+          <img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" loading="lazy" width="800" height="800">
+          <img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" loading="lazy" width="800" height="800">
+          <img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" loading="lazy" width="800" height="800">
         </div>
         <div class="story-content">
           <p>Swati's journey with baking began not in a fancy kitchen, but in the heart of a home. Years ago, a passion for creating delicious, comforting food ignited a spark that turned into The Homestyle Bakery.</p>
@@ -661,63 +824,74 @@
         <p class="section-subtitle">Everything is made from scratch with the finest ingredients. Jain options available on most items.</p>
       </div>
 
+      <!-- Category Filter Buttons -->
+      <div class="menu-categories" id="menuCategories">
+        <button class="menu-cat-btn active" data-filter="all">All</button>
+        <button class="menu-cat-btn" data-filter="savory-buns">Savory Buns</button>
+        <button class="menu-cat-btn" data-filter="sourdough-breads">Sourdough Breads</button>
+        <button class="menu-cat-btn" data-filter="artisan-snacks">Artisan Snacks</button>
+        <button class="menu-cat-btn" data-filter="pasta-sauces">Pasta & Sauces</button>
+        <button class="menu-cat-btn" data-filter="dips">Dips</button>
+      </div>
+
       <!-- Savory Buns -->
-      <div class="menu-section">
+      <div class="menu-section" data-section-category="savory-buns">
         <h3 class="menu-section-title">Savory Buns</h3>
         <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <div class="menu-card-img-wrap"><img src="images/products/vada-pav.jpeg" alt="Vada Pav Buns" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Vada Pav Buns</h3><span class="price">₹1,200/dz</span></div>
               <p>Our signature fluffy buns stuffed with spiced vada — the taste of Mumbai, reimagined.</p>
               <span class="tag tag-popular">Best Seller</span>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/chana-kulcha.jpeg" alt="Chana Kulcha Buns" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <div class="menu-card-img-wrap"><img src="images/products/chana-kulcha.jpeg" alt="Chana Kulcha Buns" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Chana Kulcha Buns</h3><span class="price">₹1,200/dz</span></div>
               <p>Soft buns filled with a spiced chana masala — familiar street food flavors, elevated.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/samosa-roll.jpeg" alt="Samosa Croissant" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <div class="menu-card-img-wrap"><img src="images/products/samosa-roll.jpeg" alt="Samosa Croissant" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Samosa Croissant</h3><span class="price">₹1,200/dz</span></div>
               <p>Flaky buttery croissant meets the spiced potato filling of a classic samosa.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/pesto-pinwheel.jpeg" alt="Pesto Pinwheel" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <div class="menu-card-img-wrap"><img src="images/products/pesto-pinwheel.jpeg" alt="Pesto Pinwheel" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pesto Pinwheel</h3><span class="price">₹1,200/dz</span></div>
               <p>Swirled with house-made basil pesto and baked to golden perfection.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-pocket.jpeg" alt="Aglio Olio Pockets" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-pocket.jpeg" alt="Aglio Olio Pockets" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Aglio Olio Pockets</h3><span class="price">₹1,200/dz</span></div>
               <p>Soft pockets filled with our aromatic garlic and chilli sauce.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/pizza-twists.jpeg" alt="Pizza Twists" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <div class="menu-card-img-wrap"><img src="images/products/pizza-twists.jpeg" alt="Pizza Twists" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pizza Twists</h3><span class="price">₹1,200/dz</span></div>
               <p>Cheesy, herby twisted buns — the perfect snack or party appetizer.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/mini-buns.jpeg" alt="Achari Paneer Parcel" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <!-- TODO: Upload achari-paneer-parcel.jpeg to images/products/ -->
+            <div class="menu-card-img-wrap"><img src="images/products/achari-paneer-parcel.jpeg" alt="Achari Paneer Parcel" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Achari Paneer Parcel</h3><span class="price">₹1,200/dz</span></div>
               <p>Tangy achari paneer wrapped in a soft, baked parcel. Bold Indian flavors.</p>
               <span class="tag tag-jain">Jain Available</span>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/mini-buns.jpeg" alt="Mini Stuffed Buns" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="savory-buns">
+            <div class="menu-card-img-wrap"><img src="images/products/mini-buns.jpeg" alt="Mini Stuffed Buns" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Mini Stuffed Buns</h3><span class="price">₹1,200/24pc</span></div>
               <p>Bite-sized assorted buns — perfect for parties and gatherings.</p>
@@ -727,55 +901,55 @@
       </div>
 
       <!-- Sourdough Breads -->
-      <div class="menu-section">
+      <div class="menu-section" data-section-category="sourdough-breads">
         <h3 class="menu-section-title">Sourdough Breads</h3>
         <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="sourdough-breads">
+            <div class="menu-card-img-wrap"><img src="images/products/khapli-wheat-sourdough.jpeg" alt="Khapli Wheat Sourdough" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Khapli Wheat Sourdough</h3><span class="price">₹350</span></div>
               <p>Traditional emmer wheat sourdough, slow-fermented for 48 hours. 466gms.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/jowar-khapli-sourdough.jpeg" alt="Jowar & Khapli Wheat" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="sourdough-breads">
+            <div class="menu-card-img-wrap"><img src="images/products/jowar-khapli-sourdough.jpeg" alt="Jowar & Khapli Wheat" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Jowar & Khapli Wheat</h3><span class="price">₹350</span></div>
               <p>A nutritious blend of jowar and khapli wheat, naturally leavened. 420gms.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/jowar-seeded-sourdough.jpeg" alt="Jowar & Khapli Seeded" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="sourdough-breads">
+            <div class="menu-card-img-wrap"><img src="images/products/jowar-seeded-sourdough.jpeg" alt="Jowar & Khapli Seeded" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Jowar & Khapli Seeded</h3><span class="price">₹450</span></div>
               <p>Our signature jowar blend topped with a generous seed crust. 500gms.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/cheddar-jalapeno.jpeg" alt="Cheddar Jalapeno Sourdough" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="sourdough-breads">
+            <div class="menu-card-img-wrap"><img src="images/products/cheddar-jalapeno.jpeg" alt="Cheddar Jalapeno Sourdough" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Cheddar Jalapeno Sourdough</h3><span class="price">₹550</span></div>
               <p>Sharp cheddar and spicy jalapeno baked into a tangy sourdough. 500gms.</p>
               <span class="tag tag-popular">Popular</span>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="sourdough-breads">
+            <div class="menu-card-img-wrap"><img src="images/products/pesto-sourdough.jpeg" alt="Pesto Sourdough" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pesto Sourdough</h3><span class="price">₹550</span></div>
               <p>Fragrant basil pesto swirled through our classic sourdough. 500gms.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/gluten-free-bread.jpeg" alt="Gluten-Free Bread" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="sourdough-breads">
+            <div class="menu-card-img-wrap"><img src="images/products/gluten-free-bread.jpeg" alt="Gluten-Free Bread" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Gluten-Free Bread</h3><span class="price">₹550</span></div>
               <p>Made with alternative flours for those with gluten sensitivities. 500gms.</p>
               <span class="tag tag-gf">Gluten-Free</span>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/gluten-free-seeded.jpeg" alt="Gluten-Free Seeded Bread" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="sourdough-breads">
+            <div class="menu-card-img-wrap"><img src="images/products/gluten-free-seeded.jpeg" alt="Gluten-Free Seeded Bread" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Gluten-Free Seeded Bread</h3><span class="price">₹650</span></div>
               <p>Our gluten-free bread loaded with a nutritious seed crust. 500gms.</p>
@@ -786,41 +960,41 @@
       </div>
 
       <!-- Snacks -->
-      <div class="menu-section">
+      <div class="menu-section" data-section-category="artisan-snacks">
         <h3 class="menu-section-title">Artisan Snacks</h3>
         <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="artisan-snacks">
+            <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-chikki.jpeg" alt="Mixed Seeds Chikki" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Mixed Seeds Chikki</h3><span class="price">₹750</span></div>
               <p>Crunchy, nutty, and naturally sweetened. Our #1 best seller. 250gms.</p>
               <span class="tag tag-popular">No. 1 Seller</span>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/almond-sesame-chikki.jpeg" alt="Roasted Almond & Sesame Chikki" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="artisan-snacks">
+            <div class="menu-card-img-wrap"><img src="images/products/almond-sesame-chikki.jpeg" alt="Roasted Almond & Sesame Chikki" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Roasted Almond & Sesame Chikki</h3><span class="price">₹900</span></div>
               <p>Premium almonds and sesame in a perfectly caramelized chikki. 250gms.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/tom-yum-nuts.jpeg" alt="Tom Yum Nuts" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="artisan-snacks">
+            <div class="menu-card-img-wrap"><img src="images/products/tom-yum-nuts.jpeg" alt="Tom Yum Nuts" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Tom Yum Nuts</h3><span class="price">₹700</span></div>
               <p>Roasted nuts tossed in a Thai-inspired tom yum seasoning. Addictive! 200gms.</p>
               <span class="tag tag-popular">Popular</span>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-crackers.jpeg" alt="Mixed Seeds Crackers" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="artisan-snacks">
+            <div class="menu-card-img-wrap"><img src="images/products/mixed-seeds-crackers.jpeg" alt="Mixed Seeds Crackers" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Mixed Seeds Crackers</h3><span class="price">₹250</span></div>
               <p>Thin, crispy, and packed with seeds. Perfect with dips. 75gms.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/jowar-wholewheat-crackers.jpeg" alt="Jowar & Wholewheat Crackers" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="artisan-snacks">
+            <div class="menu-card-img-wrap"><img src="images/products/jowar-wholewheat-crackers.jpeg" alt="Jowar & Wholewheat Crackers" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Jowar & Wholewheat Crackers</h3><span class="price">₹250</span></div>
               <p>Wholesome crackers made with jowar and wholewheat flour. 100gms.</p>
@@ -830,32 +1004,32 @@
       </div>
 
       <!-- Pasta & Sauces -->
-      <div class="menu-section">
+      <div class="menu-section" data-section-category="pasta-sauces">
         <h3 class="menu-section-title">Pasta & Sauces</h3>
         <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="pasta-sauces">
+            <div class="menu-card-img-wrap"><img src="images/products/fresh-pasta.jpeg" alt="Fresh Pasta" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Fresh Pasta</h3><span class="price">₹300</span></div>
               <p>Handmade fresh pasta — just cook for 3 minutes and pair with our sauces.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/pesto-sauce.jpeg" alt="Pesto Sauce" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="pasta-sauces">
+            <div class="menu-card-img-wrap"><img src="images/products/pesto-sauce.jpeg" alt="Pesto Sauce" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Pesto Sauce</h3><span class="price">₹550</span></div>
               <p>Fresh basil, pine nuts, and parmesan blended into a vibrant green pesto.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/marinara-sauce.jpeg" alt="Marinara Sauce" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="pasta-sauces">
+            <div class="menu-card-img-wrap"><img src="images/products/marinara-sauce.jpeg" alt="Marinara Sauce" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Marinara Sauce</h3><span class="price">₹450</span></div>
               <p>Slow-cooked tomato sauce with garlic and Italian herbs.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-sauce.jpeg" alt="Aglio e Olio Sauce" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="pasta-sauces">
+            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-sauce.jpeg" alt="Aglio e Olio Sauce" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Aglio e Olio Sauce</h3><span class="price">₹550</span></div>
               <p>Garlic-infused olive oil with chilli flakes — simple and sublime.</p>
@@ -865,18 +1039,18 @@
       </div>
 
       <!-- Dips -->
-      <div class="menu-section">
+      <div class="menu-section" data-section-category="dips">
         <h3 class="menu-section-title">Dips</h3>
         <div class="menu-grid">
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-dip.jpeg" alt="Aglio Olio Dip" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="dips">
+            <div class="menu-card-img-wrap"><img src="images/products/aglio-olio-dip.jpeg" alt="Aglio Olio Dip" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Aglio Olio Dip</h3><span class="price">₹500</span></div>
               <p>A rich, garlicky dip perfect with our crackers and breads. 125gms.</p>
             </div>
           </div>
-          <div class="menu-card">
-            <div class="menu-card-img-wrap"><img src="images/products/olive-tapenade.jpeg" alt="Olive Tapenade" class="menu-card-img" loading="lazy"></div>
+          <div class="menu-card" data-category="dips">
+            <div class="menu-card-img-wrap"><img src="images/products/olive-tapenade.jpeg" alt="Olive Tapenade" class="menu-card-img" loading="lazy" width="800" height="800"></div>
             <div class="menu-card-body">
               <div class="menu-card-header"><h3>Olive Tapenade</h3><span class="price">₹500</span></div>
               <p>Briny, savory olive tapenade — a Mediterranean classic. 125gms.</p>
@@ -974,21 +1148,21 @@
   <section class="cta-band">
     <h2>Ready to taste the <span class="script">difference?</span></h2>
     <p>Order via WhatsApp — just message us and we'll take care of the rest. Delivery available across Mumbai.</p>
-    <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20see%20the%20menu%20and%20place%20an%20order" class="btn-whatsapp" target="_blank">
+    <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20see%20the%20menu%20and%20place%20an%20order" class="btn-whatsapp" target="_blank" data-track="whatsapp_click" data-track-label="cta_band">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Order on WhatsApp
     </a>
     <div style="margin-top:1.25rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
       <a href="#menu" style="color:var(--dark); font-weight:600; text-decoration:underline; text-underline-offset:3px; font-size:0.95rem;">View Our Menu</a>
       <span style="color:var(--text-light);">·</span>
-      <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" style="color:var(--dark); font-weight:600; text-decoration:underline; text-underline-offset:3px; font-size:0.95rem;">Follow on Instagram</a>
+      <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" style="color:var(--dark); font-weight:600; text-decoration:underline; text-underline-offset:3px; font-size:0.95rem;" data-track="instagram_click">Follow on Instagram</a>
     </div>
   </section>
 
   <!-- INSTAGRAM BAR -->
   <div class="insta-bar">
     <div class="insta-bar-inner">
-      <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" class="insta-bar-link">
+      <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" class="insta-bar-link" data-track="instagram_click">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         <span>Follow us <strong>@the_homestyle_bakery</strong> for daily bakes, behind-the-scenes & new launches</span>
       </a>
@@ -1008,16 +1182,16 @@
         <a href="#menu">Menu</a>
         <a href="#community">Community</a>
         <a href="#testimonials">Kind Words</a>
-        <a href="https://wa.me/919619122581?text=Hi!%20Can%20I%20see%20the%20full%20menu?" target="_blank">View Full Menu</a>
+        <a href="https://wa.me/919619122581?text=Hi!%20Can%20I%20see%20the%20full%20menu?" target="_blank" data-track="whatsapp_click" data-track-label="footer">View Full Menu</a>
       </div>
       <div class="footer-col">
         <h4>Get in Touch</h4>
         <p>Colaba, Mumbai, India</p>
         <p style="margin-top:0.5rem;">
-          <a href="https://wa.me/919619122581" target="_blank">+91 96191 22581 (WhatsApp)</a>
+          <a href="https://wa.me/919619122581" target="_blank" data-track="whatsapp_click" data-track-label="footer">+91 96191 22581 (WhatsApp)</a>
         </p>
         <p style="margin-top:0.5rem;">
-          <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank">@the_homestyle_bakery</a>
+          <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" data-track="instagram_click">@the_homestyle_bakery</a>
         </p>
         <h4 style="margin-top:1.5rem;">We Deliver To</h4>
         <p>Colaba, Cuffe Parade, Churchgate, Fort, Marine Lines, Bandra, Worli & across South Mumbai</p>
@@ -1026,7 +1200,7 @@
     <div class="footer-bottom">
       <span>&copy; 2026 The Homestyle Bakery. All rights reserved.</span>
       <div class="footer-social">
-        <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" aria-label="Instagram">
+        <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" aria-label="Instagram" data-track="instagram_click">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
       </div>
@@ -1106,12 +1280,78 @@
     }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
     sections.forEach(s => sectionObserver.observe(s));
 
-    // ── CLOSE MOBILE MENU ON LINK CLICK ──
+    // ── MOBILE MENU: OPEN / CLOSE / BACKDROP ──
+    const navLinks = document.getElementById('navLinks');
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const menuBackdrop = document.getElementById('menuBackdrop');
+    const menuCloseBtn = navLinks.querySelector('.menu-close');
+
+    function openMenu() {
+      navLinks.classList.add('open');
+      menuBackdrop.classList.add('open');
+    }
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      menuBackdrop.classList.remove('open');
+    }
+
+    hamburgerBtn.addEventListener('click', () => {
+      navLinks.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    menuCloseBtn.addEventListener('click', closeMenu);
+    menuBackdrop.addEventListener('click', closeMenu);
+
+    // Close mobile menu on link click
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
+      link.addEventListener('click', closeMenu);
+    });
+
+    // ── MENU CATEGORY FILTER ──
+    const categoryBtns = document.querySelectorAll('.menu-cat-btn');
+    const menuSections = document.querySelectorAll('.menu-section[data-section-category]');
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        // Update active button
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Show/hide sections
+        menuSections.forEach(section => {
+          if (filter === 'all' || section.dataset.sectionCategory === filter) {
+            section.style.display = '';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+
+        // GA4 event
+        if (typeof gtag === 'function') {
+          gtag('event', 'menu_filter', { label: filter });
+        }
       });
     });
+
+    // ── GA4 EVENT TRACKING ──
+    document.querySelectorAll('[data-track]').forEach(el => {
+      el.addEventListener('click', () => {
+        if (typeof gtag !== 'function') return;
+        const event = el.dataset.track;
+        const label = el.dataset.trackLabel || '';
+        gtag('event', event, { label: label });
+      });
+    });
+  </script>
+
+  <!-- TODO: Replace G-XXXXXXXXXX with real GA4 measurement ID from analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
   </script>
 
 </body>
