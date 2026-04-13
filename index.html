@@ -838,6 +838,261 @@
     .nav-call:hover { color: var(--yellow-bold); }
     .nav-call svg { width: 16px; height: 16px; fill: currentColor; }
 
+    /* ── CART BUTTON ON MENU CARDS ── */
+    .cart-btn {
+      display: block; width: 100%; margin-top: 0.75rem;
+      padding: 0.6rem 1rem; border-radius: 50px;
+      background: var(--yellow-bold); color: var(--dark);
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+      border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .cart-btn:hover { background: var(--yellow-light); transform: translateY(-1px); }
+    .qty-stepper {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .qty-stepper button {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--yellow-bold); background: var(--white);
+      color: var(--dark); font-size: 1.1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter', sans-serif;
+    }
+    .qty-stepper button:hover { background: var(--yellow-bold); }
+    .qty-stepper .qty-val {
+      font-size: 1rem; font-weight: 700; min-width: 2rem; text-align: center;
+    }
+
+    /* ── FLOATING CART ICON ── */
+    .cart-float {
+      position: fixed; top: 1.2rem; right: 5.5rem; z-index: 101;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--yellow-bold); color: var(--dark);
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer; border: none;
+      box-shadow: 0 4px 15px rgba(255,187,0,0.3);
+      transition: all 0.3s;
+    }
+    .cart-float.visible { display: flex; }
+    .cart-float:hover { transform: scale(1.1); }
+    .cart-float svg { width: 22px; height: 22px; }
+    .cart-badge {
+      position: absolute; top: -4px; right: -4px;
+      background: #e53935; color: white;
+      font-size: 0.7rem; font-weight: 700;
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── CART DRAWER ── */
+    .cart-backdrop {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5); z-index: 150;
+    }
+    .cart-backdrop.open { display: block; }
+    .cart-drawer {
+      position: fixed; top: 0; right: -480px; bottom: 0; width: 440px;
+      background: var(--white); z-index: 151;
+      box-shadow: -8px 0 30px rgba(0,0,0,0.15);
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex; flex-direction: column;
+    }
+    .cart-drawer.open { right: 0; }
+    .cart-drawer-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(30,17,9,0.08);
+      flex-shrink: 0;
+    }
+    .cart-drawer-header h2 { font-size: 1.3rem; font-weight: 700; }
+    .cart-close {
+      background: none; border: none; font-size: 1.8rem; cursor: pointer;
+      color: var(--dark); width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+    .cart-empty {
+      text-align: center; padding: 3rem 1rem; color: var(--text-light); font-size: 0.95rem;
+    }
+    .cart-empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .cart-item {
+      display: flex; gap: 0.75rem; align-items: center;
+      padding: 1rem 0; border-bottom: 1px solid rgba(30,17,9,0.06);
+    }
+    .cart-item-img {
+      width: 56px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .cart-item-price { font-size: 0.78rem; color: var(--text-light); }
+    .cart-item-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+    .cart-item-qty { display: flex; align-items: center; gap: 0.35rem; }
+    .cart-item-qty button {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1.5px solid var(--beige); background: var(--white);
+      cursor: pointer; font-size: 0.9rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .cart-item-qty button:hover { border-color: var(--yellow-bold); background: rgba(255,187,0,0.1); }
+    .cart-item-qty .qty { font-weight: 700; font-size: 0.85rem; min-width: 1.4rem; text-align: center; }
+    .cart-item-total { font-weight: 700; font-size: 0.88rem; color: var(--dark); min-width: 55px; text-align: right; }
+    .cart-item-remove {
+      background: none; border: none; cursor: pointer; color: var(--text-light);
+      padding: 0.25rem; transition: color 0.2s; flex-shrink: 0;
+    }
+    .cart-item-remove:hover { color: #e53935; }
+    .cart-item-remove svg { width: 18px; height: 18px; }
+    .cart-footer {
+      border-top: 2px solid rgba(30,17,9,0.08);
+      padding: 1.25rem 1.5rem; flex-shrink: 0; background: var(--cream);
+    }
+    .cart-discount-line {
+      display: none; justify-content: space-between; align-items: center;
+      font-size: 0.85rem; color: #2e7d32; margin-bottom: 0.5rem;
+    }
+    .cart-subtotal {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;
+    }
+    .cart-ctas { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .cart-cta-wa {
+      flex: 1; padding: 0.8rem 1rem; border-radius: 50px;
+      background: #25D366; color: white; border: none;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .cart-cta-wa:hover { background: #1da851; transform: translateY(-1px); }
+    .cart-cta-wa svg { width: 18px; height: 18px; fill: white; }
+    .cart-cta-online {
+      flex: 1; padding: 0.8rem 1rem; border-radius: 50px;
+      background: var(--yellow-bold); color: var(--dark); border: none;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .cart-cta-online:hover { background: var(--yellow-light); transform: translateY(-1px); }
+    .cart-footer-note { font-size: 0.78rem; color: var(--text-light); text-align: center; line-height: 1.5; }
+
+    /* ── CHECKOUT MODAL ── */
+    .checkout-overlay {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6); z-index: 200;
+      align-items: center; justify-content: center;
+    }
+    .checkout-overlay.open { display: flex; }
+    .checkout-modal {
+      background: var(--white); border-radius: 20px;
+      max-width: 520px; width: 95%; max-height: 90vh; overflow-y: auto;
+      padding: 2rem; position: relative;
+    }
+    .checkout-modal h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .checkout-modal .form-group { margin-bottom: 1rem; }
+    .checkout-modal label {
+      display: block; font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 0.3rem; color: var(--dark);
+    }
+    .checkout-modal input,
+    .checkout-modal textarea,
+    .checkout-modal select {
+      width: 100%; padding: 0.75rem 1rem; border-radius: 10px;
+      border: 2px solid rgba(30,17,9,0.12); background: var(--white);
+      font-family: 'Inter', sans-serif; font-size: 0.9rem;
+      color: var(--dark); transition: border-color 0.2s;
+    }
+    .checkout-modal input:focus,
+    .checkout-modal textarea:focus,
+    .checkout-modal select:focus { border-color: var(--yellow-bold); outline: none; }
+    .checkout-modal textarea { resize: vertical; min-height: 60px; }
+    .checkout-modal .form-error { color: #c62828; font-size: 0.8rem; margin-top: 0.25rem; display: none; }
+    .checkout-summary {
+      background: var(--cream); border-radius: 12px; padding: 1rem; margin: 1rem 0;
+    }
+    .checkout-summary-item {
+      display: flex; justify-content: space-between; font-size: 0.85rem; padding: 0.3rem 0;
+    }
+    .checkout-summary-total {
+      display: flex; justify-content: space-between;
+      font-weight: 700; font-size: 1rem; padding-top: 0.5rem;
+      border-top: 1px solid rgba(30,17,9,0.1); margin-top: 0.5rem;
+    }
+    .checkout-submit {
+      width: 100%; padding: 0.9rem; border-radius: 50px;
+      background: var(--yellow-bold); color: var(--dark); border: none;
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
+    }
+    .checkout-submit:hover { background: var(--yellow-light); transform: translateY(-1px); }
+    .checkout-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.6rem; cursor: pointer;
+      color: var(--dark); width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── FALLBACK MODAL ── */
+    .fallback-overlay {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6); z-index: 210;
+      align-items: center; justify-content: center;
+    }
+    .fallback-overlay.open { display: flex; }
+    .fallback-modal {
+      background: var(--white); border-radius: 20px;
+      max-width: 440px; width: 90%; padding: 2.5rem 2rem; text-align: center;
+    }
+    .fallback-modal .fallback-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .fallback-modal h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .fallback-modal p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; }
+    .fallback-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .fallback-wa {
+      padding: 0.8rem 1.5rem; border-radius: 50px;
+      background: #25D366; color: white; border: none;
+      font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: all 0.2s;
+    }
+    .fallback-wa:hover { background: #1da851; }
+    .fallback-wa svg { width: 18px; height: 18px; fill: white; }
+    .fallback-cancel {
+      padding: 0.8rem 1.5rem; border-radius: 50px;
+      background: transparent; color: var(--dark); border: 2px solid var(--dark);
+      font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .fallback-cancel:hover { background: var(--dark); color: var(--white); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--dark); color: white; padding: 0.85rem 1.5rem;
+      border-radius: 12px; font-size: 0.9rem; font-weight: 500;
+      z-index: 300; opacity: 0; transition: all 0.4s;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2); white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── COMBOS SECTION ── */
+    .combos { background: var(--cream); padding: 4rem 1.5rem; }
+    .combos-header { text-align: center; margin-bottom: 2.5rem; }
+    .combos-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    .combo-card {
+      background: var(--white); border-radius: 16px; padding: 1.5rem;
+      border: 2px solid var(--yellow-light); transition: all 0.3s;
+    }
+    .combo-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(30,17,9,0.1); }
+    .combo-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .combo-card .combo-items { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1rem; }
+    .combo-price { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .combo-price .original { text-decoration: line-through; color: var(--text-light); font-size: 0.9rem; }
+    .combo-price .sale { font-size: 1.2rem; font-weight: 700; color: var(--yellow-bold); }
+    .combo-price .save {
+      font-size: 0.75rem; font-weight: 600; color: #2e7d32;
+      background: rgba(76,175,80,0.1); padding: 0.2rem 0.6rem; border-radius: 50px;
+    }
+
     /* ── FOCUS STATES ── */
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible,
     .menu-cat-btn:focus-visible, .nav-cta:focus-visible, .btn-primary:focus-visible,
@@ -867,6 +1122,15 @@
       .how-to-order-steps::before { display: none; }
       .list-form { max-width: 100%; }
       .nav-call-desktop { display: none; }
+      /* Cart mobile */
+      .cart-drawer { width: 100%; right: -100%; }
+      .cart-float { top: auto; bottom: 5.5rem; right: 1.5rem; z-index: 98; width: 56px; height: 56px; }
+      .cart-float svg { width: 26px; height: 26px; }
+      .cart-badge { width: 22px; height: 22px; font-size: 0.75rem; }
+      .cart-ctas { flex-direction: column; }
+      .checkout-modal { padding: 1.5rem; border-radius: 16px 16px 0 0; max-height: 95vh; margin-top: auto; }
+      .checkout-overlay.open { align-items: flex-end; }
+      .combos-grid { grid-template-columns: 1fr; }
     }
     @media (min-width: 901px) {
       .delivery-zones-mobile { display: none; }
@@ -908,6 +1172,12 @@
     </div>
   </nav>
   <div class="menu-backdrop" id="menuBackdrop"></div>
+
+  <!-- FLOATING CART ICON -->
+  <button class="cart-float" id="cartFloat" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    <span class="cart-badge" id="cartBadge">0</span>
+  </button>
 
   <!-- HERO -->
   <section class="hero">
@@ -1032,6 +1302,20 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR COMBOS -->
+  <section class="combos" id="combos">
+    <div class="section-inner">
+      <div class="combos-header">
+        <div class="section-label">Value Packs</div>
+        <div class="section-title">Popular <span class="script">Combos</span></div>
+        <p class="section-subtitle">Our best-selling bundles — curated with love, priced to delight.</p>
+      </div>
+      <div class="combos-grid" id="combosGrid">
+        <!-- Populated by JS -->
       </div>
     </div>
   </section>
@@ -1492,6 +1776,99 @@
     </div>
   </footer>
 
+  <!-- CART DRAWER -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h2>Your Order</h2>
+      <button class="cart-close" id="cartCloseBtn" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty"><div class="cart-empty-icon">🛒</div>Your cart is empty.<br>Browse our menu to get started!</div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-discount-line" id="cartDiscountLine">
+        <span>Combo Discount</span>
+        <span class="discount-amount">−₹0</span>
+      </div>
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">₹0</span>
+      </div>
+      <div class="cart-ctas">
+        <button class="cart-cta-wa" onclick="THSB_CART.openWhatsApp()">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </button>
+        <button class="cart-cta-online" onclick="THSB_CART.openCheckout()">Pay &amp; Order Online</button>
+      </div>
+      <div class="cart-footer-note">Minimum order ₹500. Free delivery on orders above ₹1,500.</div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-modal">
+      <button class="checkout-close" onclick="THSB_CART.closeCheckout()" aria-label="Close">&times;</button>
+      <h2>Complete Your Order</h2>
+      <form id="checkoutForm" novalidate>
+        <div class="form-group">
+          <label for="co_name">Name *</label>
+          <input type="text" name="co_name" id="co_name" required autocomplete="name" placeholder="Your full name">
+          <div class="form-error">Please enter your name.</div>
+        </div>
+        <div class="form-group">
+          <label for="co_phone">Phone *</label>
+          <input type="tel" name="co_phone" id="co_phone" required autocomplete="tel" placeholder="Indian mobile number">
+          <div class="form-error">Please enter a valid Indian mobile number.</div>
+        </div>
+        <div class="form-group">
+          <label for="co_email">Email (optional)</label>
+          <input type="email" name="co_email" id="co_email" autocomplete="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="co_address">Delivery Address *</label>
+          <textarea name="co_address" id="co_address" required placeholder="Full delivery address"></textarea>
+          <div class="form-error">Please enter your delivery address.</div>
+        </div>
+        <div class="form-group">
+          <label for="co_slot">Preferred Delivery Slot</label>
+          <select name="co_slot" id="co_slot">
+            <option value="Today before 5 PM">Today before 5 PM</option>
+            <option value="Tomorrow morning">Tomorrow morning</option>
+            <option value="Tomorrow afternoon">Tomorrow afternoon</option>
+            <option value="Specify in notes">Specify in notes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="co_notes">Notes (optional)</label>
+          <textarea name="co_notes" id="co_notes" placeholder="Any special instructions or requests"></textarea>
+        </div>
+        <div class="checkout-summary" id="checkoutSummary"></div>
+        <button type="submit" class="checkout-submit" id="checkoutSubmitBtn">Pay ₹0</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FALLBACK MODAL (online payment stub) -->
+  <div class="fallback-overlay" id="fallbackOverlay">
+    <div class="fallback-modal">
+      <div class="fallback-icon">🚀</div>
+      <h3>Online Payment Launching Soon!</h3>
+      <p>For now, we'll send your order to mum on WhatsApp — she'll confirm and arrange UPI/cash on delivery.</p>
+      <div class="fallback-btns">
+        <button class="fallback-wa" onclick="THSB_CART.fallbackWhatsApp()">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Send via WhatsApp
+        </button>
+        <button class="fallback-cancel" onclick="THSB_CART.closeFallback()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
   <!-- FLOATING WHATSAPP -->
   <a href="https://wa.me/919619122581?text=Hi!%20I'd%20like%20to%20place%20an%20order" class="wa-float" target="_blank" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1698,6 +2075,453 @@
         }
       });
     }
+  </script>
+
+  <!-- CART SYSTEM -->
+  <script>
+  (function() {
+    'use strict';
+    var CART_KEY = 'thsb_cart';
+    var WA_NUM = '919619122581';
+    var productCatalog = {};
+    var cart = loadCart();
+
+    // ── Persistence ──
+    function loadCart() {
+      try {
+        var d = JSON.parse(localStorage.getItem(CART_KEY));
+        return (d && Array.isArray(d.items)) ? d : { items: [], updatedAt: null };
+      } catch(e) { return { items: [], updatedAt: null }; }
+    }
+    function saveCart() {
+      cart.updatedAt = new Date().toISOString();
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      updateAllUI();
+    }
+
+    // ── Helpers ──
+    function getItemCount() {
+      return cart.items.reduce(function(s, i) { return s + i.qty; }, 0);
+    }
+    function getSubtotal() {
+      return cart.items.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
+    }
+    function getComboDiscount() {
+      return cart.items.reduce(function(s, i) { return s + (i.discount || 0) * i.qty; }, 0);
+    }
+    function formatINR(n) {
+      return n.toLocaleString('en-IN');
+    }
+    function slugify(t) {
+      return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    function parsePrice(txt) {
+      var m = txt.match(/₹([\d,]+)\/(.*)/);
+      if (!m) return { amount: 0, unit: '' };
+      return { amount: parseInt(m[1].replace(/,/g, ''), 10), unit: m[2] };
+    }
+    function gaEvent(name, params) {
+      if (typeof gtag === 'function') gtag('event', name, params || {});
+    }
+
+    // ── Cart Operations ──
+    function addItem(product) {
+      if (!product) return;
+      var ex = cart.items.find(function(i) { return i.id === product.id; });
+      if (ex) { ex.qty++; } else { cart.items.push(Object.assign({}, product, { qty: 1 })); }
+      saveCart();
+      gaEvent('cart_add', { item_name: product.name, item_count: getItemCount() });
+    }
+    function updateQty(id, delta) {
+      var item = cart.items.find(function(i) { return i.id === id; });
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart.items = cart.items.filter(function(i) { return i.id !== id; });
+        gaEvent('cart_remove', { item_name: item.name, item_count: getItemCount() });
+      }
+      saveCart();
+    }
+    function removeItem(id) {
+      var item = cart.items.find(function(i) { return i.id === id; });
+      cart.items = cart.items.filter(function(i) { return i.id !== id; });
+      saveCart();
+      if (item) gaEvent('cart_remove', { item_name: item.name, item_count: getItemCount() });
+    }
+
+    // ── UI Updates ──
+    function updateAllUI() {
+      updateCartBadge();
+      updateCartDrawer();
+      updateMenuButtons();
+    }
+    function updateCartBadge() {
+      var btn = document.getElementById('cartFloat');
+      var badge = document.getElementById('cartBadge');
+      var count = getItemCount();
+      if (count > 0) {
+        btn.classList.add('visible');
+        badge.textContent = count;
+      } else {
+        btn.classList.remove('visible');
+      }
+    }
+    function updateMenuButtons() {
+      document.querySelectorAll('[data-product-id]').forEach(function(card) {
+        var id = card.dataset.productId;
+        var item = cart.items.find(function(i) { return i.id === id; });
+        var addBtn = card.querySelector('.cart-btn');
+        var stepper = card.querySelector('.qty-stepper');
+        if (!addBtn || !stepper) return;
+        if (item && item.qty > 0) {
+          addBtn.style.display = 'none';
+          stepper.style.display = 'flex';
+          stepper.querySelector('.qty-val').textContent = item.qty;
+        } else {
+          addBtn.style.display = 'block';
+          stepper.style.display = 'none';
+        }
+      });
+      document.querySelectorAll('[data-combo-id]').forEach(function(card) {
+        var id = card.dataset.comboId;
+        var item = cart.items.find(function(i) { return i.id === id; });
+        var addBtn = card.querySelector('.cart-btn');
+        var stepper = card.querySelector('.qty-stepper');
+        if (!addBtn || !stepper) return;
+        if (item && item.qty > 0) {
+          addBtn.style.display = 'none';
+          stepper.style.display = 'flex';
+          stepper.querySelector('.qty-val').textContent = item.qty;
+        } else {
+          addBtn.style.display = 'block';
+          stepper.style.display = 'none';
+        }
+      });
+    }
+    function updateCartDrawer() {
+      var container = document.getElementById('cartItems');
+      var subtotalEl = document.getElementById('cartSubtotal');
+      var footerEl = document.getElementById('cartFooter');
+      var discountEl = document.getElementById('cartDiscountLine');
+
+      if (cart.items.length === 0) {
+        container.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🛒</div>Your cart is empty.<br>Browse our menu to get started!</div>';
+        footerEl.style.display = 'none';
+        return;
+      }
+      footerEl.style.display = 'block';
+      var html = '';
+      cart.items.forEach(function(item) {
+        var lineTotal = item.price * item.qty;
+        html += '<div class="cart-item">' +
+          '<img src="' + item.image + '" alt="' + item.name + '" class="cart-item-img" width="56" height="56">' +
+          '<div class="cart-item-info">' +
+            '<div class="cart-item-name">' + item.name + '</div>' +
+            '<div class="cart-item-price">₹' + formatINR(item.price) + '/' + item.unit + '</div>' +
+          '</div>' +
+          '<div class="cart-item-actions">' +
+            '<div class="cart-item-qty">' +
+              '<button onclick="THSB_CART.updateQty(\'' + item.id + '\', -1)" aria-label="Decrease">\u2212</button>' +
+              '<span class="qty">' + item.qty + '</span>' +
+              '<button onclick="THSB_CART.updateQty(\'' + item.id + '\', 1)" aria-label="Increase">+</button>' +
+            '</div>' +
+            '<div class="cart-item-total">₹' + formatINR(lineTotal) + '</div>' +
+            '<button class="cart-item-remove" onclick="THSB_CART.removeItem(\'' + item.id + '\')" aria-label="Remove">' +
+              '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      });
+      container.innerHTML = html;
+      var discount = getComboDiscount();
+      var subtotal = getSubtotal();
+      if (discount > 0) {
+        discountEl.style.display = 'flex';
+        discountEl.querySelector('.discount-amount').textContent = '\u2212₹' + formatINR(discount);
+      } else {
+        discountEl.style.display = 'none';
+      }
+      subtotalEl.textContent = '₹' + formatINR(subtotal - discount);
+    }
+
+    // ── Drawer open/close ──
+    function openDrawer() {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('cartBackdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      gaEvent('cart_open', { item_count: getItemCount() });
+    }
+    function closeDrawer() {
+      document.getElementById('cartDrawer').classList.remove('open');
+      document.getElementById('cartBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── WhatsApp Message Builder ──
+    function buildWhatsAppMsg(formData) {
+      var discount = getComboDiscount();
+      var subtotal = getSubtotal() - discount;
+      var msg = "Hi! I'd like to place an order from The Homestyle Bakery:\n\n";
+      cart.items.forEach(function(item) {
+        var lt = item.price * item.qty;
+        msg += '\u2022 ' + item.qty + ' x ' + item.name + ' @ ₹' + formatINR(item.price) + ' = ₹' + formatINR(lt) + '\n';
+      });
+      if (discount > 0) {
+        msg += '\n\uD83C\uDF89 Combo Discount: \u2212₹' + formatINR(discount) + '\n';
+      }
+      msg += '\nSubtotal: ₹' + formatINR(subtotal) + '\n';
+      if (formData) {
+        var deliveryFee = subtotal >= 1500 ? 0 : 50;
+        msg += '\nName: ' + formData.name;
+        msg += '\nPhone: ' + formData.phone;
+        if (formData.email) msg += '\nEmail: ' + formData.email;
+        msg += '\nDelivery address: ' + formData.address;
+        msg += '\nPreferred delivery: ' + formData.slot;
+        if (formData.notes) msg += '\nNotes: ' + formData.notes;
+        msg += '\nDelivery fee: ' + (deliveryFee === 0 ? 'Free' : '₹50');
+        msg += '\nTotal: ₹' + formatINR(subtotal + deliveryFee);
+      } else {
+        msg += '\nName: _____\nDelivery address: _____\nPreferred delivery time: _____';
+      }
+      return msg;
+    }
+    function openWhatsApp(formData) {
+      var msg = buildWhatsAppMsg(formData);
+      window.open('https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(msg), '_blank');
+      showToast('WhatsApp opened \u2014 your cart is saved.');
+      gaEvent('checkout_whatsapp', { item_count: getItemCount(), subtotal: getSubtotal() });
+    }
+
+    // ── Checkout Modal ──
+    function openCheckout() {
+      if (cart.items.length === 0) return;
+      closeDrawer();
+      var overlay = document.getElementById('checkoutOverlay');
+      var discount = getComboDiscount();
+      var subtotal = getSubtotal() - discount;
+      var deliveryFee = subtotal >= 1500 ? 0 : 50;
+      var html = '';
+      cart.items.forEach(function(item) {
+        html += '<div class="checkout-summary-item"><span>' + item.qty + 'x ' + item.name + '</span><span>₹' + formatINR(item.price * item.qty) + '</span></div>';
+      });
+      if (discount > 0) {
+        html += '<div class="checkout-summary-item" style="color:#2e7d32"><span>Combo Discount</span><span>\u2212₹' + formatINR(discount) + '</span></div>';
+      }
+      html += '<div class="checkout-summary-item"><span>Delivery</span><span>' + (deliveryFee === 0 ? 'Free' : '₹50') + '</span></div>';
+      html += '<div class="checkout-summary-total"><span>Total</span><span>₹' + formatINR(subtotal + deliveryFee) + '</span></div>';
+      document.getElementById('checkoutSummary').innerHTML = html;
+      document.getElementById('checkoutSubmitBtn').textContent = 'Pay ₹' + formatINR(subtotal + deliveryFee);
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      gaEvent('checkout_online', { item_count: getItemCount() });
+    }
+    function closeCheckout() {
+      document.getElementById('checkoutOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function submitCheckout(e) {
+      e.preventDefault();
+      var form = document.getElementById('checkoutForm');
+      var valid = true;
+      form.querySelectorAll('.form-error').forEach(function(el) { el.style.display = 'none'; });
+
+      var nameEl = form.querySelector('[name="co_name"]');
+      var phoneEl = form.querySelector('[name="co_phone"]');
+      var addressEl = form.querySelector('[name="co_address"]');
+
+      if (!nameEl.value.trim()) {
+        nameEl.nextElementSibling.style.display = 'block'; valid = false;
+      }
+      var phoneVal = phoneEl.value.replace(/[\s\-]/g, '');
+      if (!/^(\+91)?[6-9]\d{9}$/.test(phoneVal)) {
+        phoneEl.nextElementSibling.style.display = 'block'; valid = false;
+      }
+      if (!addressEl.value.trim()) {
+        addressEl.nextElementSibling.style.display = 'block'; valid = false;
+      }
+      if (!valid) return;
+
+      // TODO BATCH 3B: replace stub with Razorpay Standard Checkout init
+      // TODO BATCH 3B: call /api/create-order
+      // TODO BATCH 3B: call /api/verify-payment on payment success
+      // TODO BATCH 3B: call /api/log-order before showing success modal
+
+      var formData = {
+        name: nameEl.value.trim(),
+        phone: phoneEl.value.trim(),
+        email: form.querySelector('[name="co_email"]').value.trim(),
+        address: addressEl.value.trim(),
+        slot: form.querySelector('[name="co_slot"]').value,
+        notes: form.querySelector('[name="co_notes"]').value.trim()
+      };
+      window._thsbCheckoutFormData = formData;
+      closeCheckout();
+      document.getElementById('fallbackOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      gaEvent('checkout_online_fallback', { item_count: getItemCount() });
+    }
+    function closeFallback() {
+      document.getElementById('fallbackOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function fallbackWhatsApp() {
+      openWhatsApp(window._thsbCheckoutFormData);
+      closeFallback();
+    }
+
+    // ── Toast ──
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 3500);
+    }
+
+    // ── Initialize Menu Cards (inject Add to Cart + stepper) ──
+    function initMenuCards() {
+      document.querySelectorAll('.menu-card').forEach(function(card) {
+        var nameEl = card.querySelector('.menu-card-header h3');
+        var priceEl = card.querySelector('.price');
+        var imgEl = card.querySelector('.menu-card-img');
+        if (!nameEl || !priceEl) return;
+        var name = nameEl.textContent.trim();
+        var id = slugify(name);
+        var parsed = parsePrice(priceEl.textContent.trim());
+        var image = imgEl ? imgEl.getAttribute('src') : '';
+        card.dataset.productId = id;
+        productCatalog[id] = { id: id, name: name, price: parsed.amount, unit: parsed.unit, image: image };
+
+        var body = card.querySelector('.menu-card-body');
+        var div = document.createElement('div');
+        div.innerHTML =
+          '<button class="cart-btn" onclick="THSB_CART.addItem(THSB_CART.getProduct(\'' + id + '\'))">Add to Cart</button>' +
+          '<div class="qty-stepper" style="display:none">' +
+            '<button onclick="THSB_CART.updateQty(\'' + id + '\', -1)" aria-label="Decrease">\u2212</button>' +
+            '<span class="qty-val">0</span>' +
+            '<button onclick="THSB_CART.updateQty(\'' + id + '\', 1)" aria-label="Increase">+</button>' +
+          '</div>';
+        while (div.firstChild) body.appendChild(div.firstChild);
+      });
+    }
+
+    // ── Combos ──
+    var COMBOS = [
+      {
+        id: 'combo-party-pack', name: 'Party Pack',
+        description: '12 Vada Pav Buns + 12 Samosa Croissant + 1 pack Mixed Seeds Chikki',
+        componentIds: ['vada-pav-buns', 'samosa-croissant', 'mixed-seeds-chikki'],
+        image: 'images/products/vada-pav.jpeg', discountPct: 10
+      },
+      {
+        id: 'combo-sourdough-sampler', name: 'Sourdough Sampler',
+        description: '1 Khapli Wheat + 1 Pesto Sourdough + 1 Cheddar Jalapeno Sourdough',
+        componentIds: ['khapli-wheat-sourdough', 'pesto-sourdough', 'cheddar-jalapeno-sourdough'],
+        image: 'images/products/khapli-wheat-sourdough.jpeg', discountPct: 8
+      },
+      {
+        id: 'combo-snack-lovers', name: "Snack Lover's Box",
+        description: 'Mixed Seeds Chikki + Tom Yum Nuts + Roasted Almond & Sesame Chikki',
+        componentIds: ['mixed-seeds-chikki', 'tom-yum-nuts', 'roasted-almond-sesame-chikki'],
+        image: 'images/products/mixed-seeds-chikki.jpeg', discountPct: 10
+      }
+    ];
+
+    function initCombos() {
+      var grid = document.getElementById('combosGrid');
+      if (!grid) return;
+      COMBOS.forEach(function(combo) {
+        var originalPrice = 0;
+        combo.componentIds.forEach(function(cid) {
+          var p = productCatalog[cid];
+          if (p) originalPrice += p.price;
+        });
+        var discount = Math.round(originalPrice * combo.discountPct / 100);
+        var bundlePrice = originalPrice - discount;
+        combo.originalPrice = originalPrice;
+        combo.bundlePrice = bundlePrice;
+        combo.discount = discount;
+
+        var card = document.createElement('div');
+        card.className = 'combo-card';
+        card.dataset.comboId = combo.id;
+        card.innerHTML =
+          '<h3>' + combo.name + '</h3>' +
+          '<div class="combo-items">' + combo.description + '</div>' +
+          '<div class="combo-price">' +
+            '<span class="original">₹' + formatINR(originalPrice) + '</span>' +
+            '<span class="sale">₹' + formatINR(bundlePrice) + '</span>' +
+            '<span class="save">Save ₹' + formatINR(discount) + '</span>' +
+          '</div>' +
+          '<button class="cart-btn" onclick="THSB_CART.addCombo(\'' + combo.id + '\')">Add to Cart</button>' +
+          '<div class="qty-stepper" style="display:none">' +
+            '<button onclick="THSB_CART.updateQty(\'' + combo.id + '\', -1)" aria-label="Decrease">\u2212</button>' +
+            '<span class="qty-val">0</span>' +
+            '<button onclick="THSB_CART.updateQty(\'' + combo.id + '\', 1)" aria-label="Increase">+</button>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    }
+
+    function addCombo(comboId) {
+      var combo = COMBOS.find(function(c) { return c.id === comboId; });
+      if (!combo) return;
+      var existing = cart.items.find(function(i) { return i.id === comboId; });
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.items.push({
+          id: combo.id, name: combo.name, price: combo.bundlePrice,
+          qty: 1, image: combo.image, unit: 'combo',
+          discount: combo.discount, isCombo: true
+        });
+      }
+      saveCart();
+      gaEvent('cart_add', { item_name: combo.name, item_count: getItemCount() });
+    }
+
+    // ── Public API ──
+    window.THSB_CART = {
+      addItem: addItem, updateQty: updateQty, removeItem: removeItem,
+      addCombo: addCombo, openDrawer: openDrawer, closeDrawer: closeDrawer,
+      openCheckout: openCheckout, closeCheckout: closeCheckout,
+      submitCheckout: submitCheckout, closeFallback: closeFallback,
+      fallbackWhatsApp: fallbackWhatsApp,
+      openWhatsApp: function() { openWhatsApp(); },
+      getProduct: function(id) { return productCatalog[id]; }
+    };
+
+    // ── Boot ──
+    function boot() {
+      initMenuCards();
+      initCombos();
+      updateAllUI();
+      document.getElementById('cartFloat').addEventListener('click', openDrawer);
+      document.getElementById('cartBackdrop').addEventListener('click', closeDrawer);
+      document.getElementById('cartCloseBtn').addEventListener('click', closeDrawer);
+      document.getElementById('checkoutForm').addEventListener('submit', submitCheckout);
+      // Close checkout overlay on backdrop click
+      document.getElementById('checkoutOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeCheckout();
+      });
+      document.getElementById('fallbackOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeFallback();
+      });
+      // Escape key closes modals
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          if (document.getElementById('fallbackOverlay').classList.contains('open')) closeFallback();
+          else if (document.getElementById('checkoutOverlay').classList.contains('open')) closeCheckout();
+          else if (document.getElementById('cartDrawer').classList.contains('open')) closeDrawer();
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot);
+    } else {
+      boot();
+    }
+  })();
   </script>
 
   <!-- TODO: Replace G-XXXXXXXXXX with real GA4 measurement ID from analytics.google.com -->
