@@ -17,7 +17,8 @@
   <meta name="twitter:description" content="Sourdough breads, savory buns, artisan snacks. Made fresh in Colaba. Order on WhatsApp.">
   <meta name="twitter:image" content="https://thsb-website.vercel.app/og-image.jpg">
   <link rel="canonical" href="https://thsb-website.vercel.app/">
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -428,6 +429,7 @@
     .menu-categories {
       display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;
       margin-bottom: 3rem;
+      overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;
     }
     .menu-cat-btn {
       padding: 0.6rem 1.4rem; border-radius: 50px;
@@ -674,6 +676,14 @@
       .wa-float { width: 56px; height: 56px; bottom: 1.5rem; right: 1.5rem; }
       .wa-float svg { width: 28px; height: 28px; }
       footer { padding-bottom: calc(2rem + 90px); }
+      /* Touch targets */
+      .cart-btn { min-height: 44px; padding: 0.75rem 1rem; }
+      .menu-cat-btn { min-height: 44px; padding: 0.625rem 1rem; }
+      .hamburger { width: 44px; height: 44px; }
+      footer .footer-col a { display: inline-block; padding: 0.5rem 0; min-height: 44px; line-height: 1.5; }
+      /* WhatsApp FAB + cart FAB collision fix */
+      .whatsapp-float, .wa-float { bottom: 24px; right: 16px; width: 52px; height: 52px; }
+      .cart-float { bottom: 6.5rem; }
     }
 
     /* ── WHATSAPP FLOATING BTN ── */
@@ -1195,6 +1205,10 @@
           </a>
           <a href="#menu" class="btn-secondary">View Menu</a>
         </div>
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.25rem;padding:0.5rem 1.2rem;border-radius:50px;background:rgba(76,175,80,0.1);border:1.5px solid rgba(76,175,80,0.25);font-size:0.88rem;font-weight:600;color:#2e7d32">
+          <span style="width:10px;height:10px;border-radius:50%;background:#4caf50;display:inline-block"></span>
+          100% Vegetarian Kitchen
+        </div>
         <!-- Mobile-only badge pills (replaces hidden floating badges) -->
         <div class="hero-badges">
           <div class="hero-badge-pill"><span>★</span> 4.9 Rating</div>
@@ -1276,7 +1290,8 @@
         </div>
         <div class="story-content">
           <!-- TODO: Drop founder photo into images/swati-founder.jpeg (recommended: 280x280px or larger, square crop) -->
-          <div class="founder-photo-wrap">
+          <!-- TODO: Re-enable once swati-founder.jpeg is added -->
+          <div class="founder-photo-wrap" style="display:none">
             <img src="images/swati-founder.jpeg" alt="Swati, founder of The Homestyle Bakery, in her kitchen"
               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
             <div class="founder-photo-placeholder" style="display:none;">
@@ -1588,8 +1603,8 @@
             <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
           </div>
           <div class="order-step-num">Step 2</div>
-          <h3>WhatsApp Your Order</h3>
-          <p>Send us a message on WhatsApp with your picks. We'll confirm availability and delivery details instantly.</p>
+          <h3>Add to Cart, Then Send via WhatsApp</h3>
+          <p>Pick what you want, review your order, then send it to mum on WhatsApp in one tap.</p>
         </div>
         <div class="order-step">
           <div class="order-step-icon">
@@ -1688,13 +1703,14 @@
           </div>
         </div>
       </div>
-      <!-- TODO: Replace href with real Google Business Profile reviews URL once set up -->
+      <!-- Uncomment when real Google Business Profile URL is ready
       <div class="review-link-wrap">
         <a href="https://g.page/r/the-homestyle-bakery" class="review-link" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
           Read more reviews on Google
         </a>
       </div>
+      -->
     </div>
   </section>
 
@@ -1708,6 +1724,7 @@
         <input type="text" name="contact" placeholder="WhatsApp number or email" required autocomplete="email tel">
         <button type="submit" class="list-form-btn">Join the list</button>
       </form>
+      <p style="font-size:0.78rem;color:var(--text-light);margin-top:0.75rem;text-align:center;">We'll never spam you. Unsubscribe anytime.</p>
       <div class="list-success" id="listSuccess">Thanks! You're on the list. 🎉</div>
       <div class="list-error" id="listError"></div>
     </div>
@@ -1757,7 +1774,7 @@
         <h4>Get in Touch</h4>
         <p>Colaba, Mumbai, India</p>
         <p style="margin-top:0.5rem;">
-          <a href="tel:+919619122581">+91 96191 22581</a> · <a href="https://wa.me/919619122581" target="_blank" data-track="whatsapp_click" data-track-label="footer">WhatsApp</a>
+          <a href="tel:+919619122581" style="display:inline">+91 96191 22581</a> <span style="display:inline; margin:0 0.25rem">&middot;</span> <a href="https://wa.me/919619122581" target="_blank" data-track="whatsapp_click" data-track-label="footer" style="display:inline">WhatsApp</a>
         </p>
         <p style="margin-top:0.5rem;">
           <a href="https://www.instagram.com/the_homestyle_bakery/" target="_blank" data-track="instagram_click">@the_homestyle_bakery</a>
@@ -1795,14 +1812,24 @@
         <span>Subtotal</span>
         <span id="cartSubtotal">₹0</span>
       </div>
+      <div id="cartDeliveryLine" style="display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;margin-bottom:0.5rem">
+        <span>Delivery</span>
+        <span id="cartDeliveryVal">₹50</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:1.15rem;font-weight:700;margin-bottom:1rem;padding-top:0.5rem;border-top:1px solid rgba(30,17,9,0.1)">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <div style="font-size:0.78rem;color:var(--text-light);text-align:center;margin-bottom:0.75rem">Free delivery on orders above ₹1,500.</div>
+      <div id="cartMinMsg" style="display:none;text-align:center;color:var(--yellow-bold);font-size:0.88rem;font-weight:600;margin-bottom:0.75rem"></div>
       <div class="cart-ctas">
-        <button class="cart-cta-wa" onclick="THSB_CART.openWhatsApp()">
+        <button class="cart-cta-wa" id="cartCtaWa" onclick="THSB_CART.openWhatsApp()">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Order via WhatsApp
         </button>
-        <button class="cart-cta-online" onclick="THSB_CART.openCheckout()">Pay &amp; Order Online</button>
+        <button class="cart-cta-online" id="cartCtaOnline" onclick="THSB_CART.openCheckout()">Pay &amp; Order Online</button>
       </div>
-      <div class="cart-footer-note">Minimum order ₹500. Free delivery on orders above ₹1,500.</div>
+      <div class="cart-footer-note">Minimum order ₹500.</div>
     </div>
   </div>
 
@@ -2021,6 +2048,12 @@
     if (listForm) {
       listForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        if (LIST_ENDPOINT.includes('PLACEHOLDER')) {
+          listForm.style.display = 'none';
+          listSuccess.textContent = 'Signups launching soon — follow us on Instagram for updates!';
+          listSuccess.classList.add('show');
+          return;
+        }
         const name = listForm.name.value.trim();
         const contact = listForm.contact.value.trim();
 
@@ -2234,14 +2267,41 @@
       });
       container.innerHTML = html;
       var discount = getComboDiscount();
-      var subtotal = getSubtotal();
+      var subtotal = getSubtotal() - discount;
       if (discount > 0) {
         discountEl.style.display = 'flex';
         discountEl.querySelector('.discount-amount').textContent = '\u2212₹' + formatINR(discount);
       } else {
         discountEl.style.display = 'none';
       }
-      subtotalEl.textContent = '₹' + formatINR(subtotal - discount);
+      subtotalEl.textContent = '₹' + formatINR(subtotal);
+
+      // Delivery fee line
+      var deliveryVal = document.getElementById('cartDeliveryVal');
+      var totalEl = document.getElementById('cartTotal');
+      var deliveryFee = subtotal >= 1500 ? 0 : 50;
+      if (deliveryFee === 0) {
+        deliveryVal.innerHTML = '<span style="text-decoration:line-through;color:var(--text-light);margin-right:0.35rem">₹50</span> FREE';
+      } else {
+        deliveryVal.textContent = '₹50';
+      }
+      totalEl.textContent = '₹' + formatINR(subtotal + deliveryFee);
+
+      // Minimum order enforcement (₹500)
+      var minMsg = document.getElementById('cartMinMsg');
+      var ctaWa = document.getElementById('cartCtaWa');
+      var ctaOnline = document.getElementById('cartCtaOnline');
+      if (subtotal < 500) {
+        var needed = 500 - subtotal;
+        minMsg.textContent = 'Add ₹' + formatINR(needed) + ' more to meet the ₹500 minimum order.';
+        minMsg.style.display = 'block';
+        ctaWa.disabled = true; ctaWa.style.opacity = '0.5'; ctaWa.style.pointerEvents = 'none';
+        ctaOnline.disabled = true; ctaOnline.style.opacity = '0.5'; ctaOnline.style.pointerEvents = 'none';
+      } else {
+        minMsg.style.display = 'none';
+        ctaWa.disabled = false; ctaWa.style.opacity = ''; ctaWa.style.pointerEvents = '';
+        ctaOnline.disabled = false; ctaOnline.style.opacity = ''; ctaOnline.style.pointerEvents = '';
+      }
     }
 
     // ── Drawer open/close ──
@@ -2445,6 +2505,7 @@
         card.className = 'combo-card';
         card.dataset.comboId = combo.id;
         card.innerHTML =
+          '<img src="' + combo.image + '" alt="' + combo.name + '" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:14px 14px 0 0;margin-bottom:1rem">' +
           '<h3>' + combo.name + '</h3>' +
           '<div class="combo-items">' + combo.description + '</div>' +
           '<div class="combo-price">' +
@@ -2499,6 +2560,16 @@
       document.getElementById('cartBackdrop').addEventListener('click', closeDrawer);
       document.getElementById('cartCloseBtn').addEventListener('click', closeDrawer);
       document.getElementById('checkoutForm').addEventListener('submit', submitCheckout);
+      // Clear form errors on input
+      ['co_name', 'co_phone', 'co_address'].forEach(function(fieldName) {
+        var el = document.querySelector('[name="' + fieldName + '"]');
+        if (el) {
+          el.addEventListener('input', function() {
+            var err = this.nextElementSibling;
+            if (err && err.classList.contains('form-error')) err.style.display = 'none';
+          });
+        }
+      });
       // Close checkout overlay on backdrop click
       document.getElementById('checkoutOverlay').addEventListener('click', function(e) {
         if (e.target === this) closeCheckout();
@@ -2524,7 +2595,7 @@
   })();
   </script>
 
-  <!-- TODO: Replace G-XXXXXXXXXX with real GA4 measurement ID from analytics.google.com -->
+  <!-- Uncomment when real GA4 Measurement ID is available
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -2532,6 +2603,7 @@
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
+  -->
 
 </body>
 </html>
